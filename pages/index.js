@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const Home = () => {
 	return (
 		<>
@@ -173,9 +175,11 @@ const Home = () => {
 						<p className="text-white pb-10 text-xl">
 							Det er litt forskjeller på utseende og bruk av begreper i nettbankene, men mye er likt. Sjekk din egen nettbank.
 						</p>
-						<a href="#" className="bg-white font-anenirHeavy rounded-md px-3 py-2 inline-block uppercase shadow-md font-medium text-text-xl">
-							start simulering
-						</a>
+						<Link href="/step2">
+							<a className="bg-white font-anenirHeavy rounded-md px-3 py-2 inline-block uppercase shadow-md font-medium text-text-xl">
+								start simulering
+							</a>
+						</Link>
 					</div>
 				</div>
 			</section>
