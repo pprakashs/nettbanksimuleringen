@@ -20,13 +20,13 @@ h3,
 h4 {
 	font-family: 'Avenir LT W01_65 Medium1475532';
 }
-h2 {
-	font-size: 2em;
+h1 {
+	font-size: 2rem;
 	line-height: 1.375;
 	font-weight: 500;
 }
 h2 {
-	font-size: 1.25em;
+	font-size: 1.25rem;
 	line-height: 1.6;
 	font-weight: 500;
 }
