@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
@@ -16,7 +17,15 @@ function MyApp({ Component, pageProps }) {
 			body.classList.add(pathname.split('/')[1] + '-page');
 		}
 	}, []);
-	return <Component {...pageProps} />;
+	return (
+		<>
+			<Head>
+				<title>Nettbanksimuleringen</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
+			<Component {...pageProps} />
+		</>
+	);
 }
 
 export default MyApp;

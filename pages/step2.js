@@ -173,11 +173,11 @@ const Step2 = () => {
 						<p className="text-black pb-12 text-xl">Ved å velge en av påloggingsmetodene under. </p>
 
 						<div className="flex space-x-8">
-							<a href="#" className="bg-primary p-8 text-white text-2xl">
+							<a href="#" className="bg-primary p-8 text-white text-2xl hover:bg-yellow-700 transition">
 								<strong className="block font-anenirHeavy">BankID</strong>
 								Med kodebrikke
 							</a>
-							<a href="#" className="bg-primary p-8 text-white text-2xl">
+							<a href="#" className="bg-primary p-8 text-white text-2xl hover:bg-yellow-700 transition">
 								<strong className="block font-anenirHeavy">BankID</strong>
 								På mobiltelefon
 							</a>
