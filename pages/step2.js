@@ -1,186 +1,168 @@
+import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import HeaderSecondary from './../components/HeaderSecondary';
+
 const Step2 = () => {
+	const containerRef = useRef();
+	const sidePanel = useRef();
+	const formRef = useRef();
+	const formRef2 = useRef();
+	const [error, setError] = useState(false);
+	const [screen, setScreen] = useState(1);
+	const router = useRouter();
+	const keyCode = '123456';
+	useEffect(() => {
+		const containerAnimation = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				containerRef.current.style.maxWidth = '1215px';
+
+				setTimeout(() => {
+					resolve(true);
+				}, 500);
+			}, 100);
+		});
+		containerAnimation.then(() => {
+			sidePanel.current.classList.remove('hidden');
+			setTimeout(() => {
+				sidePanel.current.style.opacity = 1;
+			}, 50);
+		});
+	}, []);
+
+	const submitHandle = (e) => {
+		e.preventDefault();
+		const val = formRef.current.querySelector('input[name="accountNumber"]').value;
+		const introText = sidePanel.current.querySelector('.intro-text');
+		const keyBlock = sidePanel.current.querySelector('.key-block');
+		if (val === '' || val.length !== 11) {
+			setError(true);
+			return;
+		}
+		const sideBarAnimation = new Promise((resolve, reject) => {
+			introText.classList.add('opacity-0');
+			setTimeout(() => {
+				introText.classList.add('hidden');
+				resolve(true);
+			}, 320);
+		});
+		sideBarAnimation.then(() => {
+			keyBlock.classList.remove('hidden');
+			keyBlock.classList.remove('opacity-0');
+			setScreen(2);
+		});
+	};
+
+	const submitHandleScreen2 = (e) => {
+		e.preventDefault();
+		const val = formRef2.current.querySelector('input[name="keyCode"]').value;
+		if (val === '') {
+			setError('Vennligst fyll inn koden fra kodebrikken');
+			return;
+		}
+		if (val !== keyCode) {
+			setError('Koden må stemme med kodebrikken!');
+			return;
+		}
+		setError(null);
+		router.push('/account');
+	};
+
 	return (
 		<>
-			<header className="bg-white py-4 fixed w-full top-0 left-0">
-				<div className="container">
-					<svg
-						id="Kompetanse_Norge_logo"
-						data-name="Kompetanse Norge logo"
-						xmlns="http://www.w3.org/2000/svg"
-						width="117.046"
-						height="22.587"
-						viewBox="0 0 117.046 22.587"
-					>
-						<path
-							id="Path_13"
-							data-name="Path 13"
-							d="M44.36,29.193H33.689a.938.938,0,0,1-.938-.939v-6.3a.939.939,0,0,1,.938-.939H44.36a.939.939,0,0,1,.939.939v6.3a.938.938,0,0,1-.939.939"
-							transform="translate(-23.001 -20.86)"
-							fill="#c3301b"
-						/>
-						<path
-							id="Path_14"
-							data-name="Path 14"
-							d="M44.471,43.311H33.213a.813.813,0,0,1-.575-1.387L43.9,30.9a.813.813,0,0,1,1.389.574V42.5a.813.813,0,0,1-.813.813"
-							transform="translate(-23.001 -20.86)"
-							fill="#c3301b"
-						/>
-						<path
-							id="Path_15"
-							data-name="Path 15"
-							d="M29.735,43.307H23.9a.9.9,0,0,1-.9-.9V36.574a.9.9,0,0,1,.9-.9h5.835a.9.9,0,0,1,.9.9v5.834a.9.9,0,0,1-.9.9"
-							transform="translate(-23.001 -20.86)"
-							fill="#c3301b"
-						/>
-						<path
-							id="Path_16"
-							data-name="Path 16"
-							d="M31.184,25.1a4.091,4.091,0,1,0-4.091,4.091A4.091,4.091,0,0,0,31.184,25.1"
-							transform="translate(-23.001 -20.86)"
-							fill="#c3301b"
-						/>
-						<path
-							id="Path_17"
-							data-name="Path 17"
-							d="M29.725,34.207H23.94A.939.939,0,0,1,23,33.269V31.6a.939.939,0,0,1,.939-.938h5.785a.938.938,0,0,1,.939.938v1.67a.938.938,0,0,1-.939.938"
-							transform="translate(-23.001 -20.86)"
-							fill="#c3301b"
-						/>
-						<path
-							id="Path_18"
-							data-name="Path 18"
-							d="M37.725,33.152a2.492,2.492,0,1,0-2.492,2.492,2.492,2.492,0,0,0,2.492-2.492"
-							transform="translate(-23.001 -20.86)"
-							fill="#c3301b"
-						/>
-						<path
-							id="Path_19"
-							data-name="Path 19"
-							d="M55.667,25.183l3.492-4.172H61.5l-3.537,4.157,3.673,5.124H59.295L56.544,26.5l-.877,1.043v2.751H53.732V21.012h1.935Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_20"
-							data-name="Path 20"
-							d="M66.1,30.443c-2.585,0-4.384-2.025-4.384-4.791,0-2.781,1.8-4.791,4.384-4.791s4.4,2.01,4.4,4.791c0,2.766-1.814,4.791-4.4,4.791m0-7.859c-1.466,0-2.419,1.254-2.419,3.068S64.63,28.72,66.1,28.72s2.448-1.254,2.448-3.068-.967-3.068-2.448-3.068"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_21"
-							data-name="Path 21"
-							d="M75.95,30.292l-2.3-6.061v6.061H71.838V21.012h2.3l2.479,6.545,2.464-6.545h2.267v9.281H79.517V24.231l-2.252,6.061Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_22"
-							data-name="Path 22"
-							d="M85.048,27.073v3.219h-1.92v-9.28h3.779c1.965,0,3.265,1.058,3.265,3.038s-1.3,3.023-3.265,3.023Zm1.738-4.414H85.048v2.766h1.738a1.386,1.386,0,1,0,0-2.766"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_23"
-							data-name="Path 23"
-							d="M97.774,21.012V22.7h-4.4V24.73h3.99v1.647h-3.99v2.207h4.4v1.708h-6.3V21.012Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_24"
-							data-name="Path 24"
-							d="M98.771,21.012h7.92V22.7H103.7v7.588h-1.95V22.7H98.771Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_25"
-							data-name="Path 25"
-							d="M111.512,21.012l3.552,9.28H113.1l-.831-2.237h-3.477l-.816,2.237h-1.934l3.552-9.28ZM109.4,26.423h2.267l-1.133-3.084Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_26"
-							data-name="Path 26"
-							d="M123.951,30.292h-1.527l-4.383-6.182v6.182h-1.859V21.012H118l4.1,5.865V21.012h1.859Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_27"
-							data-name="Path 27"
-							d="M127.094,27.647a1.743,1.743,0,0,0,1.844,1.194c.937,0,1.557-.423,1.557-1.164,0-.559-.333-.861-1.134-1.043l-1.662-.377c-1.331-.3-2.358-1.013-2.358-2.54,0-1.678,1.39-2.857,3.34-2.857a3.342,3.342,0,0,1,3.643,2.691H130.4a1.64,1.64,0,0,0-1.708-1.1c-.876,0-1.466.423-1.466,1.088,0,.529.348.846,1.043,1.013l1.693.393c1.512.347,2.433,1.209,2.433,2.614,0,1.8-1.481,2.888-3.446,2.888-2.071,0-3.537-1.028-3.854-2.8Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_28"
-							data-name="Path 28"
-							d="M140.047,21.012V22.7h-4.4V24.73h3.99v1.647h-3.99v2.207h4.4v1.708h-6.3V21.012Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_29"
-							data-name="Path 29"
-							d="M60.942,43.311h-.877l-5.184-7.376v7.376H53.732V34.03h1.134l4.943,7.059V34.03h1.134Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_30"
-							data-name="Path 30"
-							d="M66.79,43.447c-2.433,0-4.186-1.98-4.186-4.777s1.753-4.776,4.186-4.776c2.449,0,4.2,1.965,4.2,4.776s-1.753,4.777-4.2,4.777m0-8.48c-1.783,0-2.992,1.527-2.992,3.7s1.209,3.7,2.992,3.7c1.8,0,3.008-1.527,3.008-3.7s-1.209-3.7-3.008-3.7"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_31"
-							data-name="Path 31"
-							d="M73.848,39.381v3.93H72.654V34.03H76.1c1.86,0,3.038.937,3.038,2.691a2.46,2.46,0,0,1-2.357,2.615l2.735,3.975h-1.36l-2.66-3.93Zm0-1.013H76.07c1.225,0,1.89-.62,1.89-1.647s-.665-1.648-1.89-1.648H73.848Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_32"
-							data-name="Path 32"
-							d="M85.169,39.759V38.731h3.355v.635a3.75,3.75,0,0,1-3.839,4.081c-2.418,0-4.262-1.875-4.262-4.777s1.859-4.776,4.232-4.776a3.5,3.5,0,0,1,3.658,2.857H87.119a2.434,2.434,0,0,0-2.464-1.784c-1.8,0-3.038,1.481-3.038,3.7s1.224,3.719,3.068,3.719a2.577,2.577,0,0,0,2.706-2.63Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-						<path
-							id="Path_33"
-							data-name="Path 33"
-							d="M96.1,34.03v1.058H91.365V38.02h4.293v1.058H91.365v3.159H96.1v1.073h-5.91V34.03Z"
-							transform="translate(-23.001 -20.86)"
-							fill="#1a1818"
-						/>
-					</svg>
-				</div>
-			</header>
+			<HeaderSecondary />
 
-			<section className="py-20">
-				<div className="container">
-					<div className="my-6 max-w-3xl ml-auto mr-auto bg-white px-10 py-10 shadow-md">
-						<p className="text-black pb-8 text-xl">
-							Det finnes flere innloggingsmuligheter, blant annet med kodekort, SMS-koder og QR-koder. De fleste bankene har derimot BankID på mobil
-							eller innlogging med kodebrikker eller kodekort.
-						</p>
-						<h1 className="text-black mb-3">Logg inn i nettbanksimuleringen</h1>
-						<p className="text-black pb-12 text-xl">Ved å velge en av påloggingsmetodene under. </p>
+			<section className="py-20 min-h-screen flex flex-col justify-center">
+				<div className="container max-w-[791px] flex flex-wrap my-6 space-x-6 transition duration-500 transition-max-width" ref={containerRef}>
+					<div className="lg:w-[800px] bg-white px-10 py-10 shadow-md">
+						<h1 className="mb-6">Logg inn med BankID med kodebrikke</h1>
 
-						<div className="flex space-x-8">
-							<a href="#" className="bg-primary p-8 text-white text-2xl hover:bg-yellow-700 transition">
-								<strong className="block font-anenirHeavy">BankID</strong>
-								Med kodebrikke
-							</a>
-							<a href="#" className="bg-primary p-8 text-white text-2xl hover:bg-yellow-700 transition">
-								<strong className="block font-anenirHeavy">BankID</strong>
-								På mobiltelefon
-							</a>
+						<div className="border border-gray-300 px-7 py-10 min-h-[200px] mb-5">
+							{screen === 1 ? (
+								<form onSubmit={submitHandle} ref={formRef}>
+									<div className="flex items-center mb-5">
+										<span className="border-2 border-blue rounded-full w-8 h-8 justify-center items-center flex font-bold text-blue text-xl">
+											<svg xmlns="http://www.w3.org/2000/svg" width="10.08" height="17.568" viewBox="0 0 10.08 17.568">
+												<path
+													id="Path_35"
+													data-name="Path 35"
+													d="M18.54,19.248V17.784a5.091,5.091,0,0,1,.1-1.08,2.914,2.914,0,0,1,.288-.78,3.019,3.019,0,0,1,.516-.672q.324-.324.8-.78.384-.36.768-.732a7.739,7.739,0,0,0,.7-.768,4.162,4.162,0,0,0,.516-.84,2.358,2.358,0,0,0,.2-1,2.525,2.525,0,0,0-.2-1.02,2.582,2.582,0,0,0-.54-.8,2.423,2.423,0,0,0-.8-.528,2.6,2.6,0,0,0-1-.192,2.558,2.558,0,0,0-1.908.744A3.228,3.228,0,0,0,17.1,11.28l-2.448-.24a5.057,5.057,0,0,1,1.74-3.276,5.349,5.349,0,0,1,3.54-1.188,5.777,5.777,0,0,1,1.884.3,4.527,4.527,0,0,1,1.524.864,3.979,3.979,0,0,1,1.02,1.392,4.551,4.551,0,0,1,.372,1.884,4.419,4.419,0,0,1-.264,1.6,4.836,4.836,0,0,1-.744,1.284l-1.44,1.488-.24.216q-.384.36-.612.612a2.21,2.21,0,0,0-.36.528,2.1,2.1,0,0,0-.18.612,6.1,6.1,0,0,0-.048.84v1.056Zm-.456,3.312a1.6,1.6,0,1,1,.468,1.116A1.524,1.524,0,0,1,18.084,22.56Z"
+													transform="translate(-14.652 -6.576)"
+													fill="#2a68a2"
+												/>
+											</svg>
+										</span>
+										<span className="text-xl ml-5">Fødselsnummer</span>
+									</div>
+									<div className="flex">
+										<input
+											type="number"
+											name="accountNumber"
+											className="border-2 border-blue p-3 text-xl block number-field focus:outline-none h-13 w-72"
+											placeholder="11 siffer"
+										/>
+										<button type="submit" className="bg-blue h-13 w-16 ml-4 flex justify-center items-center focus:outline-none ">
+											<svg xmlns="http://www.w3.org/2000/svg" width="30.001" height="22.002" viewBox="0 0 30.001 22.002">
+												<path
+													d="M20.354,5.146a.5.5,0,0,0-.708,0l-2,2a.5.5,0,0,0,0,.708L23.793,14H1.5a.5.5,0,0,0-.5.5v3a.5.5,0,0,0,.5.5H23.793l-6.147,6.146a.5.5,0,0,0,0,.708l2,2a.5.5,0,0,0,.708,0l10.5-10.5a.5.5,0,0,0,0-.708Z"
+													transform="translate(-1 -4.999)"
+													fill="#fff"
+												/>
+											</svg>
+										</button>
+									</div>
+									{error && <div className="text-red-600 pt-3 text-xl">Fødselsnummer må inneholde 11 siffer</div>}
+								</form>
+							) : (
+								<form onSubmit={submitHandleScreen2} ref={formRef2}>
+									<h3 className="text-xl mb-1">Engangskode</h3>
+									<label className="text-xl mb-3 block">Skriv inn tallene fra kodebrikken</label>
+									<div className="flex">
+										<input
+											type="number"
+											name="keyCode"
+											className="border-2 border-blue p-3 text-xl block number-field focus:outline-none h-13 w-72"
+											placeholder="6 siffer"
+										/>
+										<button type="submit" className="bg-blue h-13 w-16 ml-4 flex justify-center items-center focus:outline-none ">
+											<svg xmlns="http://www.w3.org/2000/svg" width="30.001" height="22.002" viewBox="0 0 30.001 22.002">
+												<path
+													d="M20.354,5.146a.5.5,0,0,0-.708,0l-2,2a.5.5,0,0,0,0,.708L23.793,14H1.5a.5.5,0,0,0-.5.5v3a.5.5,0,0,0,.5.5H23.793l-6.147,6.146a.5.5,0,0,0,0,.708l2,2a.5.5,0,0,0,.708,0l10.5-10.5a.5.5,0,0,0,0-.708Z"
+													transform="translate(-1 -4.999)"
+													fill="#fff"
+												/>
+											</svg>
+										</button>
+									</div>
+									{error && <div className="text-red-600 pt-3 text-xl">{error}</div>}
+								</form>
+							)}
+						</div>
+					</div>
+					<div className="border border-secondary bg-[#CEEBF5] p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
+						<div className="intro-text transition duration-300">
+							<h1 className="mb-5">Oppgavetekst</h1>
+							<p className="text-base max-w-[250px]">
+								Skriv inn ditt eget eller et fiktivt fødselsnummer. Husk at det skal være 11 siffer i et fødselsnummer. Ingen informasjon du skriver
+								inn blir lagret.{' '}
+							</p>
+
+							<button className="text-black w-6 h-6 absolute top-3 right-3 focus:outline-none">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+								</svg>
+							</button>
+						</div>
+						<div className="key-block h-full hidden transition opacity-0 duration-300">
+							<div className="flex h-full justify-center items-center">
+								<div className="relative">
+									<img src={require('./../img/signering_kodebrikke2@2x.png')} alt="" />
+									<input
+										type="text"
+										defaultValue={keyCode}
+										className="bg-none bg-transparent border-0 absolute text-white top-2/4 left-2/4 transform -translate-y-2/4 -translate-x-2/4 w-24 text-center text-2xl focus:outline-none"
+									/>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -1,28 +1,69 @@
+import { useRef } from 'react';
+import Link from 'next/link';
+import { dropdown } from './../util/dropdown';
+
 const Header = () => {
+	const navRef = useRef();
+	const dropdownHandle = () => {
+		dropdown(navRef);
+	};
+
 	return (
-		<header className="bg-white py-2">
-			<div className="container flex items-center">
-				<a href="#" className="flex font-anenirHeavy">
-					<svg className="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-					</svg>
-					<strong>Gå ut av simulator</strong>
-				</a>
-				<nav className="ml-auto">
+		<header className="bg-white py-2 h-[69px] flex flex-col justify-center absolute w-full left-0 top-0">
+			<div className="container flex items-center max-w-[1215px]">
+				<Link href="/">
+					<a className="flex font-anenirHeavy">
+						<svg className="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+						</svg>
+						<strong>Gå ut av simulator</strong>
+					</a>
+				</Link>
+				<nav className="ml-auto" ref={navRef}>
 					<ul className="flex">
-						<li className="ml-4">
-							<a className="bg-primary pl-4 pr-3 text-sm rounded text-white flex items-center font-anenirHeavy" href="#">
+						<li className="ml-4 relative">
+							<button
+								className="bg-primary pl-4 pr-3 text-sm rounded text-white flex items-center font-anenirHeavy focus:outline-none"
+								onClick={dropdownHandle}
+							>
 								Dagligbank
 								<span className="border-l border-white ml-3 pl-2 py-2">
 									<svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
 									</svg>
 								</span>
-							</a>
+							</button>
+							<div className="nav__dropdown dropdown bg-[#B3B3B4] rounded-[15px] p-[4px] absolute top-full mt-2 left-0 w-[276px] z-50 transition opacity-0 duration-300 hidden">
+								<i className="block arrow-top absolute -top-5 right-[139px]"></i>
+								<div className="bg-white rounded-[10px] overflow-hidden">
+									<ul>
+										<li>
+											<Link href="/transactions">
+												<a className="block px-3 py-2 text-base hover:bg-pink transition">Mine transaksjoner</a>
+											</Link>
+										</li>
+										<li>
+											<a href="#" className="block px-3 py-2 text-base hover:bg-pink transition">
+												Ny betaling
+											</a>
+										</li>
+										<li>
+											<a href="#" className="block px-3 py-2 text-base hover:bg-pink transition">
+												Overføre egen kontoer
+											</a>
+										</li>
+										<li>
+											<a href="#" className="block px-3 py-2 text-base hover:bg-pink transition">
+												Avtalegiro
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
 						</li>
 						<li className="bg-gray-200 py-2 px-4 text-sm rounded ml-4">Pensjon og forsikring</li>
 						<li className="bg-gray-200 py-2 px-4 text-sm rounded ml-4">Sparing og investering</li>
-						<li className="bg-gray-200 py-2 px-4 text-sm rounded ml-4">Lan</li>
+						<li className="bg-gray-200 py-2 px-4 text-sm rounded ml-4">Lån</li>
 					</ul>
 				</nav>
 			</div>

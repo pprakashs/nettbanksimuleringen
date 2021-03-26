@@ -1,15 +1,21 @@
 :root {
 	--primary: #d34618;
 	--secondary: #707070;
+	--blue: #2a68a2;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+	height: 100%;
+}
 body {
 	background-color: #e0e0e0;
 	font-family: 'Avenir LT W01_45 Book1475508';
+	transition: background-color 0.2s linear;
 }
 .home-page {
 	background-color: var(--primary);
@@ -32,4 +38,23 @@ h2 {
 }
 p {
 	line-height: 1.6rem;
+}
+
+input.number-field::-webkit-outer-spin-button,
+input.number-field::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input.number-field[type='number'] {
+	-moz-appearance: textfield;
+}
+
+.arrow-top {
+	width: 0;
+	height: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-bottom: 20px solid #b3b3b4;
 }
