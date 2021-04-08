@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import HeaderSecondary from './../components/HeaderSecondary';
+import HeaderSecondary from '../../../components/HeaderSecondary';
 
 const Step2 = () => {
 	const containerRef = useRef();
@@ -64,7 +64,7 @@ const Step2 = () => {
 			return;
 		}
 		setError(null);
-		router.push('/account');
+		router.push('/konto');
 	};
 
 	return (
@@ -80,14 +80,14 @@ const Step2 = () => {
 							{screen === 1 ? (
 								<form onSubmit={submitHandle} ref={formRef}>
 									<div className="flex items-center mb-5">
-										<span className="border-2 border-blue rounded-full w-8 h-8 justify-center items-center flex font-bold text-blue text-xl">
+										<span className="border-2 border-primary rounded-full w-8 h-8 justify-center items-center flex font-bold text-blue text-xl">
 											<svg xmlns="http://www.w3.org/2000/svg" width="10.08" height="17.568" viewBox="0 0 10.08 17.568">
 												<path
 													id="Path_35"
 													data-name="Path 35"
 													d="M18.54,19.248V17.784a5.091,5.091,0,0,1,.1-1.08,2.914,2.914,0,0,1,.288-.78,3.019,3.019,0,0,1,.516-.672q.324-.324.8-.78.384-.36.768-.732a7.739,7.739,0,0,0,.7-.768,4.162,4.162,0,0,0,.516-.84,2.358,2.358,0,0,0,.2-1,2.525,2.525,0,0,0-.2-1.02,2.582,2.582,0,0,0-.54-.8,2.423,2.423,0,0,0-.8-.528,2.6,2.6,0,0,0-1-.192,2.558,2.558,0,0,0-1.908.744A3.228,3.228,0,0,0,17.1,11.28l-2.448-.24a5.057,5.057,0,0,1,1.74-3.276,5.349,5.349,0,0,1,3.54-1.188,5.777,5.777,0,0,1,1.884.3,4.527,4.527,0,0,1,1.524.864,3.979,3.979,0,0,1,1.02,1.392,4.551,4.551,0,0,1,.372,1.884,4.419,4.419,0,0,1-.264,1.6,4.836,4.836,0,0,1-.744,1.284l-1.44,1.488-.24.216q-.384.36-.612.612a2.21,2.21,0,0,0-.36.528,2.1,2.1,0,0,0-.18.612,6.1,6.1,0,0,0-.048.84v1.056Zm-.456,3.312a1.6,1.6,0,1,1,.468,1.116A1.524,1.524,0,0,1,18.084,22.56Z"
 													transform="translate(-14.652 -6.576)"
-													fill="#2a68a2"
+													fill="#d34618"
 												/>
 											</svg>
 										</span>
@@ -97,10 +97,10 @@ const Step2 = () => {
 										<input
 											type="number"
 											name="accountNumber"
-											className="border-2 border-blue p-3 text-xl block number-field focus:outline-none h-13 w-72"
+											className="border-2 border-primary p-3 text-xl block number-field focus:outline-none h-13 w-72"
 											placeholder="11 siffer"
 										/>
-										<button type="submit" className="bg-blue h-13 w-16 ml-4 flex justify-center items-center focus:outline-none ">
+										<button type="submit" className="bg-primary h-13 w-16 ml-4 flex justify-center items-center focus:outline-none ">
 											<svg xmlns="http://www.w3.org/2000/svg" width="30.001" height="22.002" viewBox="0 0 30.001 22.002">
 												<path
 													d="M20.354,5.146a.5.5,0,0,0-.708,0l-2,2a.5.5,0,0,0,0,.708L23.793,14H1.5a.5.5,0,0,0-.5.5v3a.5.5,0,0,0,.5.5H23.793l-6.147,6.146a.5.5,0,0,0,0,.708l2,2a.5.5,0,0,0,.708,0l10.5-10.5a.5.5,0,0,0,0-.708Z"
@@ -120,10 +120,10 @@ const Step2 = () => {
 										<input
 											type="number"
 											name="keyCode"
-											className="border-2 border-blue p-3 text-xl block number-field focus:outline-none h-13 w-72"
+											className="border-2 border-primary p-3 text-xl block number-field focus:outline-none h-13 w-72"
 											placeholder="6 siffer"
 										/>
-										<button type="submit" className="bg-blue h-13 w-16 ml-4 flex justify-center items-center focus:outline-none ">
+										<button type="submit" className="bg-primary h-13 w-16 ml-4 flex justify-center items-center focus:outline-none ">
 											<svg xmlns="http://www.w3.org/2000/svg" width="30.001" height="22.002" viewBox="0 0 30.001 22.002">
 												<path
 													d="M20.354,5.146a.5.5,0,0,0-.708,0l-2,2a.5.5,0,0,0,0,.708L23.793,14H1.5a.5.5,0,0,0-.5.5v3a.5.5,0,0,0,.5.5H23.793l-6.147,6.146a.5.5,0,0,0,0,.708l2,2a.5.5,0,0,0,.708,0l10.5-10.5a.5.5,0,0,0,0-.708Z"
@@ -155,7 +155,7 @@ const Step2 = () => {
 						<div className="key-block h-full hidden transition opacity-0 duration-300">
 							<div className="flex h-full justify-center items-center">
 								<div className="relative">
-									<img src={require('./../img/signering_kodebrikke2@2x.png')} alt="" />
+									<img src={require('./../../../img/signering_kodebrikke2@2x.png')} alt="" />
 									<input
 										type="text"
 										defaultValue={keyCode}

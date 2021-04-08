@@ -18,7 +18,7 @@ const Home = () => {
 						<p className="text-white pb-10 text-xl">
 							Det er litt forskjeller på utseende og bruk av begreper i nettbankene, men mye er likt. Sjekk din egen nettbank.
 						</p>
-						<Link href="/step1">
+						<Link href="/steg1">
 							<a className="bg-white font-anenirHeavy rounded-lg px-7 pt-[15px] pb-[13px] inline-block uppercase shadow-md font-medium text-xl hover:shadow-lg transition hover:bg-pink ">
 								Start simulering av nettbank
 							</a>

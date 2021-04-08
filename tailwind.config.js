@@ -1,5 +1,5 @@
 module.exports = {
-	purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+	purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './util/**/*.{js,ts,jsx,tsx}'],
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		extend: {
@@ -10,6 +10,9 @@ module.exports = {
 			borderColor: {
 				secondary: 'var(--secondary)',
 				blue: 'var(--blue)',
+				'black-100': '#767676',
+				primary: 'var(--primary)',
+				pink: '#FAE9E2',
 			},
 			backgroundColor: {
 				primary: 'var(--primary)',
@@ -19,11 +22,15 @@ module.exports = {
 			},
 			textColor: {
 				blue: 'var(--blue)',
+				primary: 'var(--primary)',
 			},
 			fontFamily: {
-				DEFAULT: ['"Avenir LT W01_45 Book1475508"'],
+				avenir: ['"Avenir LT W01_45 Book1475508"'],
 				anenirMedium: ['"Avenir LT W01_65 Medium1475532"'],
 				anenirHeavy: ['"Avenir LT W01_85 Heavy1475544"'],
+			},
+			fontSize: {
+				'2rem': '2rem',
 			},
 			height: {
 				13: '3.25rem',

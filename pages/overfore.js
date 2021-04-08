@@ -1,19 +1,18 @@
-import { useState, useRef } from 'react';
-import Layout from './../components/Layout';
-import { dropdown } from './../util/dropdown';
+import { useState } from 'react';
+import Layout from '../components/Layout';
+import { dropdown } from '../util/dropdown';
 const Transactions = () => {
-	const accountRef = useRef();
-	const selectAccountHandle = () => {
-		dropdown(accountRef);
+	const selectAccountHandle = (e) => {
+		dropdown(e.currentTarget.parentNode);
 	};
 	return (
 		<Layout>
-			<section className="bg-white px-7 pt-10 pb-[200px] shadow-md">
+			<div className="pt-10 pb-[200px]">
 				<div className="flex mb-10">
 					<h1>Mine transaksjoner</h1>
 					<div className="ml-auto flex items-center">
 						<span className="text-xl mr-4">Velg konto:</span>
-						<div className="relative text-xl" ref={accountRef}>
+						<div className="relative text-xl">
 							<button
 								type="button"
 								className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-11 block border border-secondary rounded"
@@ -21,15 +20,9 @@ const Transactions = () => {
 							>
 								1234.56.78910 Brukskonto
 							</button>
-							<svg
-								className="absolute top-3 right-2 w-6 h-6 pointer-events-none"
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-							</svg>
+							<i className="absolute top-[22px] right-4 w-6 h-4 pointer-events-none">
+								<img src={require('./../img/down-arrow.svg')} className="w-6" alt="" />
+							</i>
 							<ul className="dropdown border border-secondary rounded-b border-t-0 absolute top-full left-0 w-full bg-white z-40 -mt-1 overflow-hidden transition opacity-0 duration-300 hidden">
 								<li>
 									<a href="#" className="block px-3 py-3 hover:bg-pink transition">
@@ -75,7 +68,7 @@ const Transactions = () => {
 						</tr>
 					</tbody>
 				</table>
-			</section>
+			</div>
 		</Layout>
 	);
 };

@@ -40,6 +40,19 @@ p {
 	line-height: 1.6rem;
 }
 
+input,
+select,
+textarea {
+	font-family: 'Avenir LT W01_45 Book1475508';
+}
+
+input::placeholder,
+input::-webkit-input-placeholder,
+textarea::placeholder,
+textarea::-webkit-input-placeholde {
+	color: #767676;
+}
+
 input.number-field::-webkit-outer-spin-button,
 input.number-field::-webkit-inner-spin-button {
 	-webkit-appearance: none;

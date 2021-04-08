@@ -3,9 +3,8 @@ import Link from 'next/link';
 import { dropdown } from './../util/dropdown';
 
 const Header = () => {
-	const navRef = useRef();
-	const dropdownHandle = () => {
-		dropdown(navRef);
+	const dropdownHandle = (e) => {
+		dropdown(e.currentTarget.parentNode);
 	};
 
 	return (
@@ -19,8 +18,16 @@ const Header = () => {
 						<strong>Gå ut av simulator</strong>
 					</a>
 				</Link>
-				<nav className="ml-auto" ref={navRef}>
-					<ul className="flex">
+				<nav className="ml-auto">
+					<ul className="flex items-center">
+						<li className="mr-3">
+							<Link href="/konto">
+								<a href="#" className="text-primary font-anenirHeavy text-sm flex items-center">
+									<img src={require('./../img/home.svg')} className="relative -top-1" alt="" />
+									<span className="ml-3">Startsiden</span>
+								</a>
+							</Link>
+						</li>
 						<li className="ml-4 relative">
 							<button
 								className="bg-primary pl-4 pr-3 text-sm rounded text-white flex items-center font-anenirHeavy focus:outline-none"

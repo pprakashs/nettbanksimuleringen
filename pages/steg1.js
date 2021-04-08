@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import HeaderSecondary from './../components/HeaderSecondary';
+import HeaderSecondary from '../components/HeaderSecondary';
 
 const Step1 = () => {
 	return (
@@ -17,13 +17,13 @@ const Step1 = () => {
 						<p className="text-black pb-12 text-xl">Ved å velge en av påloggingsmetodene under. </p>
 
 						<div className="flex space-x-8 pb-4">
-							<Link href="/step2">
+							<Link href="/bankid/tekst/steg1">
 								<a className="bg-primary p-8 text-white text-2xl hover:bg-pink transition hover:text-black">
 									<strong className="block font-anenirHeavy">BankID</strong>
 									Med kodebrikke
 								</a>
 							</Link>
-							<Link href="/step2">
+							<Link href="/bankid/mobil/steg1">
 								<a className="bg-primary p-8 text-white text-2xl hover:bg-pink transition hover:text-black">
 									<strong className="block font-anenirHeavy">BankID</strong>
 									På mobiltelefon
