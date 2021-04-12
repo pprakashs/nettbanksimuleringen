@@ -45,24 +45,28 @@ const Header = () => {
 								<div className="bg-white rounded-[10px] overflow-hidden">
 									<ul>
 										<li>
-											<Link href="/transactions">
+											<Link href="/oversikt">
 												<a className="block px-3 py-2 text-base hover:bg-pink transition">Mine transaksjoner</a>
 											</Link>
 										</li>
 										<li>
-											<a href="#" className="block px-3 py-2 text-base hover:bg-pink transition">
-												Ny betaling
-											</a>
+											<Link href="/betaling">
+												<a className="block px-3 py-2 text-base hover:bg-pink transition">Ny betaling</a>
+											</Link>
 										</li>
 										<li>
-											<a href="#" className="block px-3 py-2 text-base hover:bg-pink transition">
-												Overføre egen kontoer
-											</a>
+											<Link href="/overfore">
+												<a href="#" className="block px-3 py-2 text-base hover:bg-pink transition">
+													Overføre egen kontoer
+												</a>
+											</Link>
 										</li>
 										<li>
-											<a href="#" className="block px-3 py-2 text-base hover:bg-pink transition">
-												Avtalegiro
-											</a>
+											<Link href="/avtalegiro">
+												<a href="#" className="block px-3 py-2 text-base hover:bg-pink transition">
+													Avtalegiro
+												</a>
+											</Link>
 										</li>
 									</ul>
 								</div>

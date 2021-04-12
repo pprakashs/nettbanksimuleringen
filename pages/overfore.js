@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import { dropdown } from '../util/dropdown';
 const Transfer = () => {
 	const selectAccountHandle = (e) => {
-		dropdown(e.currentTarget.parentNode);
+		dropdown(e.currentTarget.parentNode.parentNode);
 	};
 
 	return (

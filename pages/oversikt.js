@@ -1,10 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
+import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { dropdown } from '../util/dropdown';
-const Transactions = () => {
+import { numberFormat } from './../util/numberFormat';
+import { set_account } from './../redux/actions/accountsAction';
+const Transactions = ({ details }) => {
+	const [selectedAccount, setSelectedAccount] = useState({
+		transaction: [],
+	});
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		setSelectedAccount(...details.allAccounts.filter((acc) => acc.accountName === details['selectedAccount']));
+	}, [details]);
+
 	const selectAccountHandle = (e) => {
 		dropdown(e.currentTarget.parentNode);
 	};
+
+	const accountChangeHandle = (e) => {
+		dispatch(set_account(e));
+	};
+
 	return (
 		<Layout>
 			<div className="pt-10 pb-[200px]">
@@ -18,22 +36,24 @@ const Transactions = () => {
 								className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-11 block border border-secondary rounded"
 								onClick={selectAccountHandle}
 							>
-								1234.56.78910 Brukskonto
+								{selectedAccount.accountNumber} {selectedAccount.accountName}
 							</button>
 							<i className="absolute top-[22px] right-4 w-6 h-4 pointer-events-none">
 								<img src={require('./../img/down-arrow.svg')} className="w-6" alt="" />
 							</i>
 							<ul className="dropdown border border-secondary rounded-b border-t-0 absolute top-full left-0 w-full bg-white z-40 -mt-1 overflow-hidden transition opacity-0 duration-300 hidden">
-								<li>
-									<a href="#" className="block px-3 py-3 hover:bg-pink transition">
-										1234.43.21012 Sparekonto
-									</a>
-								</li>
-								<li>
-									<a href="#" className="block px-3 py-3 hover:bg-pink transition">
-										4321.01.23456 Kredittkort
-									</a>
-								</li>
+								{details.allAccounts
+									.filter((acc) => acc.accountName !== details['selectedAccount'])
+									.map((account, index) => (
+										<li key={index}>
+											<button
+												onClick={() => accountChangeHandle(account.accountName)}
+												className="block bg-white border-0 w-full px-3 py-3 hover:bg-pink transition text-left focus:outline-none"
+											>
+												{account.accountNumber} {account.accountName}
+											</button>
+										</li>
+									))}
 							</ul>
 						</div>
 					</div>
@@ -48,24 +68,14 @@ const Transactions = () => {
 						</tr>
 					</thead>
 					<tbody>
-						<tr className="text-xl">
-							<td className="p-3 border-l border-secondary">Dagens dato</td>
-							<td className="p-3 border-l border-secondary pl-5">Abonnement</td>
-							<td className="p-3 border-l pr-5 border-secondary text-right">29.879,67</td>
-							<td className="p-3 border-l pr-5 border-secondary text-right">29.879,67</td>
-						</tr>
-						<tr className="text-xl">
-							<td className="p-3 border-l border-secondary">I går</td>
-							<td className="p-3 border-l border-secondary pl-5">Strøm</td>
-							<td className="p-3 border-l pr-5 border-secondary text-right">46.788,43 </td>
-							<td className="p-3 border-l pr-5 border-secondary text-right">46.788,43</td>
-						</tr>
-						<tr className="text-xl">
-							<td className="p-3 border-l border-secondary">I går</td>
-							<td className="p-3 border-l border-secondary pl-5">Husleie</td>
-							<td className="p-3 border-l pr-5 border-secondary text-right">20.000,00</td>
-							<td className="p-3 border-l pr-5 border-secondary text-right">20.000,00</td>
-						</tr>
+						{selectedAccount.transaction.map((el, index) => (
+							<tr className="text-xl" key={index}>
+								<td className="p-3 border-l border-secondary align-top">{el.date}</td>
+								<td className="p-[10px] border-l border-secondary pl-5 align-top">{el.details}</td>
+								<td className="p-3 border-l pr-5 border-secondary text-right align-top">{el.type === 'debit' && numberFormat(el.amount)}</td>
+								<td className="p-3 border-l pr-5 border-secondary text-right align-top">{el.type === 'credit' && numberFormat(el.amount)}</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</div>
@@ -73,4 +83,8 @@ const Transactions = () => {
 	);
 };
 
-export default Transactions;
+const mapStateToProps = (state) => ({
+	details: state.accounts,
+});
+
+export default connect(mapStateToProps)(Transactions);

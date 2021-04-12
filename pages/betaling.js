@@ -3,8 +3,9 @@ import Layout from '../components/Layout';
 import { dropdown } from '../util/dropdown';
 const Payment = () => {
 	const selectAccountHandle = (e) => {
-		dropdown(e.currentTarget.parentNode);
+		dropdown(e.currentTarget.parentNode.parentNode);
 	};
+	const d = new Date();
 	return (
 		<Layout>
 			<div className="py-10">
@@ -107,7 +108,9 @@ const Payment = () => {
 						<div className="flex border-t border-black-100">
 							<div className="w-4/12 p-5">
 								<div className="flex">
-									<input type="text" className="border border-[#B3B3B4] w-full p-3 h-[48px] focus:outline-none" />
+									<div className="border border-[#B3B3B4] w-full p-3 h-[48px] focus:outline-none">
+										{('0' + (d.getMonth() + 1)).slice(-2)}.{('0' + d.getDate()).slice(-2)}.{d.getFullYear()}
+									</div>
 									<div className="border border-l-0 border-[#B3B3B4] w-[48px] h-[48px] ml-auto flex justify-center items-center">
 										<i>
 											<img src={require('./../img/calendar-Icon.svg')} alt="" className="w-5" />
@@ -127,7 +130,7 @@ const Payment = () => {
 						</div>
 					</div>
 
-					<button type="submit" className="rounded-md bg-primary px-6 py-2 text-white font-anenirHeavy text-xl mt-7">
+					<button type="submit" className="rounded-md bg-primary px-6 py-2 text-white font-anenirHeavy text-xl mt-7 uppercase">
 						Bekreft betaling
 					</button>
 				</form>
