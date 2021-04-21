@@ -7,9 +7,7 @@ const Layout = (props) => {
 		<>
 			<Header />
 			<main className="py-[120px]">
-				<div className="container max-w-[1215px]">
-					<section className="bg-white px-7 shadow-md">{props.children}</section>
-				</div>
+				<div className="container max-w-[1215px]">{props.children}</div>
 			</main>
 		</>
 	);

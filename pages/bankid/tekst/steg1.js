@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
 import HeaderSecondary from '../../../components/HeaderSecondary';
+import setUser from './../../../redux/actions/userAction';
 
 const Step2 = () => {
 	const containerRef = useRef();
@@ -11,6 +13,7 @@ const Step2 = () => {
 	const [screen, setScreen] = useState(1);
 	const router = useRouter();
 	const keyCode = '123456';
+	const dispatch = useDispatch();
 	useEffect(() => {
 		const containerAnimation = new Promise((resolve, reject) => {
 			setTimeout(() => {
@@ -64,6 +67,7 @@ const Step2 = () => {
 			return;
 		}
 		setError(null);
+		dispatch(setUser('tekst'));
 		router.push('/konto');
 	};
 
@@ -156,11 +160,9 @@ const Step2 = () => {
 							<div className="flex h-full justify-center items-center">
 								<div className="relative">
 									<img src={require('./../../../img/signering_kodebrikke2@2x.png')} alt="" />
-									<input
-										type="text"
-										defaultValue={keyCode}
-										className="bg-none bg-transparent border-0 absolute text-white top-2/4 left-2/4 transform -translate-y-2/4 -translate-x-2/4 w-24 text-center text-2xl focus:outline-none"
-									/>
+									<div className="bg-none bg-transparent border-0 absolute text-white top-2/4 left-2/4 transform -translate-y-2/4 -translate-x-2/4 w-24 text-center text-2xl focus:outline-none">
+										{keyCode}
+									</div>
 								</div>
 							</div>
 						</div>

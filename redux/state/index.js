@@ -1,5 +1,10 @@
-import getDate from './../../util/getDate';
-export const initialState = {
+import { getDate } from '../../util/dates';
+
+export const userInitialState = {
+	loggedIn: false,
+};
+
+export const accountInitialState = {
 	selectedAccount: 'Brukskonto',
 	allAccounts: [
 		{
@@ -10,7 +15,7 @@ export const initialState = {
 			transaction: [
 				{
 					details: 'Matbutikk',
-					amount: 128.7,
+					amount: 128.70,
 					date: getDate(0),
 					type: 'debit',
 				},
@@ -118,3 +123,48 @@ export const initialState = {
 		},
 	],
 };
+
+export const autoPaymentInitialState = {
+	autoPayments: [
+		{
+			name: 'Forsikring',
+			accountNumber: '3456.12.12346',
+		},
+		{
+			name: 'Strøm',
+			accountNumber: '3456.12.12347',
+		},
+	],
+	autoPaymentSuggestion: [
+		{
+			name: 'Se på TV',
+			accountNumber: '3456.12.12345',
+			kidNumber: '70018230419',
+		},
+	],
+	selectedAutoPaymentSuggestion: null,
+};
+
+export const taskInitialState = {
+	taskPayment: {
+		completed: false,
+		panel: true,
+		payment: {
+			name: 'Se på TV',
+			accountNumber: '3456.12.12345',
+			kidNumber: '70018230419',
+			amount: 139.90,
+		},
+	},
+
+	taskTransfer: {
+		completed: false,
+		panel: true,
+		payment: {
+			details: 'Du ønsker å overføre 1000 kr fra brukskonto til sparekonto.',
+			amount: 1000,
+		},
+	},
+};
+
+export const transactionInitialState = null;
