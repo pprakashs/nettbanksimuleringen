@@ -1,4 +1,4 @@
-import { TRANSFER_CREATED, PAYMENT_CREATED, TRANSFER_PANEL, PAYMENT_PANEL } from './../types';
+import { TRANSFER_CREATED, PAYMENT_CREATED, TRANSFER_PANEL, PAYMENT_PANEL, AUTO_PAYMENT_PANEL, AUTO_PAYMENT_CREATED } from './../types';
 
 export const taskTransferCrated = (data) => {
 	return {
@@ -22,5 +22,17 @@ export const taskPaymentPanel = (data) => {
 	return {
 		type: PAYMENT_PANEL,
 		payload: data,
+	};
+};
+
+export const taskAutoPaymentPanel = (data) => {
+	return {
+		type: AUTO_PAYMENT_PANEL,
+		payload: data,
+	};
+};
+export const taskAutoPaymentCreated = () => {
+	return {
+		type: AUTO_PAYMENT_CREATED,
 	};
 };

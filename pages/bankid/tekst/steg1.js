@@ -4,6 +4,14 @@ import { useDispatch } from 'react-redux';
 import HeaderSecondary from '../../../components/HeaderSecondary';
 import setUser from './../../../redux/actions/userAction';
 
+const getRandomKey = () => {
+	var x = '';
+	for (var i = 0; i < 6; i++) {
+		x += Math.floor(Math.random() * 6) + 1;
+	}
+	return x;
+};
+
 const Step2 = () => {
 	const containerRef = useRef();
 	const sidePanel = useRef();
@@ -12,8 +20,10 @@ const Step2 = () => {
 	const [error, setError] = useState(false);
 	const [screen, setScreen] = useState(1);
 	const router = useRouter();
-	const keyCode = '123456';
 	const dispatch = useDispatch();
+
+	const keyCode = getRandomKey();
+
 	useEffect(() => {
 		const containerAnimation = new Promise((resolve, reject) => {
 			setTimeout(() => {
@@ -66,7 +76,7 @@ const Step2 = () => {
 			setError('Koden må stemme med kodebrikken!');
 			return;
 		}
-		setError(null);
+		// setError(null);
 		dispatch(setUser('tekst'));
 		router.push('/konto');
 	};
@@ -76,7 +86,7 @@ const Step2 = () => {
 			<HeaderSecondary />
 
 			<section className="py-20 min-h-screen flex flex-col justify-center">
-				<div className="container max-w-[791px] flex flex-wrap my-6 space-x-6 transition duration-500 transition-max-width" ref={containerRef}>
+				<div className="container max-w-[791px] flex my-6 space-x-6 transition duration-500 transition-max-width" ref={containerRef}>
 					<div className="lg:w-[800px] bg-white px-10 py-10 shadow-md">
 						<h1 className="mb-6">Logg inn med BankID med kodebrikke</h1>
 
@@ -161,7 +171,7 @@ const Step2 = () => {
 								<div className="relative">
 									<img src={require('./../../../img/signering_kodebrikke2@2x.png')} alt="" />
 									<div className="bg-none bg-transparent border-0 absolute text-white top-2/4 left-2/4 transform -translate-y-2/4 -translate-x-2/4 w-24 text-center text-2xl focus:outline-none">
-										{keyCode}
+										{screen === 2 && keyCode}
 									</div>
 								</div>
 							</div>

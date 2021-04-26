@@ -40,6 +40,7 @@ const Payment = ({ accounts, task, transaction }) => {
 		}
 		setSelectedAccount(...accounts.filter((acc) => acc.accountName === 'Brukskonto'));
 	}, []);
+
 	const selectAccountHandle = (e) => {
 		dropdown(e.currentTarget.parentNode.parentNode);
 	};
@@ -134,19 +135,19 @@ const Payment = ({ accounts, task, transaction }) => {
 								)}
 							</div>
 
-							<div className="border border-black-100">
+							<div className="border border-black-100 text-base lg:text-xl">
 								<div className="bg-[#E0E0E0] flex">
-									<div className="w-2/3 text-xl font-anenirHeavy px-5 py-2">Fra konto</div>
-									<div className="w-1/3 border-l border-black-100 text-xl font-anenirHeavy px-5 py-2">Til konto</div>
+									<div className="w-2/3 font-anenirHeavy lg:px-5 px-3 py-2">Fra konto</div>
+									<div className="w-1/3 border-l border-black-100 font-anenirHeavy lg:px-5 px-3 py-2">Til konto</div>
 								</div>
 
 								<div className="flex border-t border-black-100">
-									<div className="w-2/3 p-5">
-										<div className="relative text-xl">
+									<div className="w-2/3 py-5 lg:px-5 px-3">
+										<div className="relative">
 											<div className="relative">
 												<button
 													type="button"
-													className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left text-xl flex"
+													className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left flex"
 													onClick={selectAccountHandle}
 												>
 													<div>
@@ -203,8 +204,8 @@ const Payment = ({ accounts, task, transaction }) => {
 											</ul>
 										</div>
 									</div>
-									<div className="w-1/3 border-l border-black-100 p-5">
-										<div className=" flex">
+									<div className="w-1/3 border-l border-black-100 py-5 lg:px-5 px-3">
+										<div className="flex">
 											<input
 												type="text"
 												defaultValue={transaction !== null ? transaction.transferAccountNumber : ''}
@@ -223,12 +224,12 @@ const Payment = ({ accounts, task, transaction }) => {
 
 							<div className="border border-black-100 border-t-0">
 								<div className="bg-[#E0E0E0] flex">
-									<div className="w-1/2 text-xl px-5 py-2 font-anenirHeavy">Mottakers navn</div>
-									<div className="w-1/2 border-l border-black-100 text-xl font-anenirHeavy px-5 py-2">Eget notat</div>
+									<div className="w-1/2 lg:px-5 px-3 py-2 font-anenirHeavy">Mottakers navn</div>
+									<div className="w-1/2 border-l border-black-100 font-anenirHeavy lg:px-5 px-3 py-2">Eget notat</div>
 								</div>
 
 								<div className="flex border-t border-black-100">
-									<div className="w-1/2 p-5 py-9">
+									<div className="w-1/2 p-5 py-9 lg:px-5 px-3">
 										<input
 											name="navn"
 											defaultValue={transaction !== null ? transaction.navn : ''}
@@ -236,7 +237,7 @@ const Payment = ({ accounts, task, transaction }) => {
 											className="border border-[#B3B3B4] w-full p-3 h-[48px] focus:outline-none"
 										/>
 									</div>
-									<div className="w-1/2 p-5 py-9 border-l border-black-100">
+									<div className="w-1/2 p-5 py-9 lg:px-5 px-3 border-l border-black-100">
 										<input
 											name="notat"
 											defaultValue={transaction !== null ? transaction.notat : ''}
@@ -249,17 +250,17 @@ const Payment = ({ accounts, task, transaction }) => {
 
 							<div className="border border-black-100 border-t-0">
 								<div className="bg-[#E0E0E0] flex">
-									<div className="w-4/12 text-xl px-5 py-2">
+									<div className="w-4/12 lg:px-5 px-3 py-2">
 										<strong className="font-anenirHeavy">Dato</strong> (dd.mm.åååå)
 									</div>
-									<div className="w-7/12 border-l border-black-100 text-xl font-anenirHeavy px-5 py-2">KID/melding</div>
-									<div className="w-4/12 border-l border-black-100 text-xl px-5 py-2">
+									<div className="w-7/12 border-l border-black-100 font-anenirHeavy lg:px-5 px-3 py-2">KID/melding</div>
+									<div className="w-4/12 border-l border-black-100 lg:px-5 px-3 py-2">
 										<strong className="font-anenirHeavy">Beløp</strong> (kr og øre)
 									</div>
 								</div>
 
 								<div className="flex border-t border-black-100">
-									<div className="w-4/12 p-5 py-9">
+									<div className="w-4/12 p-5 py-9 lg:px-5 px-3">
 										<div className="flex">
 											<div className="border border-[#B3B3B4] w-full p-3 h-[48px] focus:outline-none">{getTodayDate()}</div>
 											<div className="border border-l-0 border-[#B3B3B4] w-[48px] h-[48px] ml-auto flex justify-center items-center">
@@ -269,7 +270,7 @@ const Payment = ({ accounts, task, transaction }) => {
 											</div>
 										</div>
 									</div>
-									<div className="w-7/12 p-5 py-9 border-l border-black-100">
+									<div className="w-7/12 p-5 py-9 lg:px-5 px-3 border-l border-black-100">
 										<input
 											name="details"
 											type="text"
@@ -277,7 +278,7 @@ const Payment = ({ accounts, task, transaction }) => {
 											defaultValue={details}
 										/>
 									</div>
-									<div className="w-4/12 border-l border-black-100 p-5 py-9">
+									<div className="w-4/12 border-l border-black-100 p-5 py-9 lg:px-5 px-3">
 										<div className="flex space-x-4">
 											<input
 												type="number"

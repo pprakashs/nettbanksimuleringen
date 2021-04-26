@@ -17,7 +17,7 @@ const autoPaymentReducer = (state = autoPaymentInitialState, action) => {
 			return {
 				...state,
 				autoPayments: [action.payload, ...state.autoPayments],
-				autoPaymentSuggestion: state.autoPaymentSuggestion.filter((list) => list.accountNumber !== action.payload.accountNumber),
+				autoPaymentSuggestion: state.autoPaymentSuggestion.filter((list) => list.name !== action.payload.name),
 			};
 		default:
 			return state;

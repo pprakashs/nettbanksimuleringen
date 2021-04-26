@@ -1,4 +1,4 @@
-import { TRANSFER_CREATED, PAYMENT_CREATED, TRANSFER_PANEL, PAYMENT_PANEL } from './../types';
+import { TRANSFER_CREATED, PAYMENT_CREATED, TRANSFER_PANEL, PAYMENT_PANEL, AUTO_PAYMENT_PANEL, AUTO_PAYMENT_CREATED } from './../types';
 import { taskInitialState } from './../state';
 
 const taskReducer = (state = taskInitialState, action) => {
@@ -37,6 +37,22 @@ const taskReducer = (state = taskInitialState, action) => {
 					panel: action.payload,
 					completed: state.taskPayment.completed,
 					payment: state.taskPayment.payment,
+				},
+			};
+		case AUTO_PAYMENT_PANEL:
+			return {
+				...state,
+				taskAutoPayment: {
+					panel: action.payload,
+					completed: state.taskAutoPayment.completed,
+				},
+			};
+		case AUTO_PAYMENT_CREATED:
+			return {
+				...state,
+				taskAutoPayment: {
+					completed: true,
+					panel: false,
 				},
 			};
 		default:

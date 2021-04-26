@@ -1,7 +1,8 @@
 import { getDate } from '../../util/dates';
 
 export const userInitialState = {
-	loggedIn: false,
+	loggedIn: true,
+	verifiedType: 'tekst',
 };
 
 export const accountInitialState = {
@@ -15,7 +16,7 @@ export const accountInitialState = {
 			transaction: [
 				{
 					details: 'Matbutikk',
-					amount: 128.70,
+					amount: 128.7,
 					date: getDate(0),
 					type: 'debit',
 				},
@@ -127,15 +128,33 @@ export const accountInitialState = {
 export const autoPaymentInitialState = {
 	autoPayments: [
 		{
-			name: 'Forsikring',
-			accountNumber: '3456.12.12346',
-		},
-		{
 			name: 'Strøm',
 			accountNumber: '3456.12.12347',
+			paymentFrom: {
+				accountNumber: '1234.56.78910',
+				accountName: 'Brukskonto',
+			},
+		},
+		{
+			name: 'Forsikring',
+			accountNumber: '3456.12.12346',
+			paymentFrom: {
+				accountNumber: '1234.56.78910',
+				accountName: 'Brukskonto',
+			},
 		},
 	],
 	autoPaymentSuggestion: [
+		{
+			name: 'Trening',
+			accountNumber: '3456.12.12345',
+			kidNumber: '70018230419',
+		},
+		{
+			name: 'Mobilabonnement',
+			accountNumber: '3456.12.12345',
+			kidNumber: '70018230419',
+		},
 		{
 			name: 'Se på TV',
 			accountNumber: '3456.12.12345',
@@ -153,7 +172,7 @@ export const taskInitialState = {
 			name: 'Se på TV',
 			accountNumber: '3456.12.12345',
 			kidNumber: '70018230419',
-			amount: 139.90,
+			amount: 139.9,
 		},
 	},
 
@@ -164,6 +183,11 @@ export const taskInitialState = {
 			details: 'Du ønsker å overføre 1000 kr fra brukskonto til sparekonto.',
 			amount: 1000,
 		},
+	},
+
+	taskAutoPayment: {
+		completed: false,
+		panel: true,
 	},
 };
 

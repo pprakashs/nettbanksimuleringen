@@ -17,6 +17,7 @@ const Mobile1 = () => {
 	const dispatch = useDispatch();
 
 	const pinID = 1386;
+
 	const wordsArray1 = ['GLAD', 'MORSOM', 'POSITIV', 'NYSGJERRIG', 'LEKKER', 'LOVLIG', 'ROLIG', 'UNG', 'GAMMEL', 'STILIG'];
 	const wordsArray2 = ['HEST', 'HIPSTER', 'STJERNE', 'BURSDAG', 'FEST', 'BIL', 'DINOSAUR', 'KOMPIS', 'HJELPER', 'LUNSJ'];
 
@@ -26,6 +27,21 @@ const Mobile1 = () => {
 
 	const wordFirst = wordsArray1[getRandomWords()];
 	const wordSecond = wordsArray2[getRandomWords()];
+
+	const containerAnimation = (type) => {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				if (type === 'IN') {
+					containerRef.current.style.maxWidth = '1215px';
+				} else {
+					containerRef.current.style.maxWidth = '800px';
+				}
+				setTimeout(() => {
+					resolve(true);
+				}, 500);
+			}, 100);
+		});
+	};
 
 	const submitHandle = (e) => {
 		e.preventDefault();
@@ -44,15 +60,7 @@ const Mobile1 = () => {
 
 		setErrorDateBirth(false);
 
-		const containerAnimation = new Promise((resolve, reject) => {
-			setTimeout(() => {
-				containerRef.current.style.maxWidth = '1215px';
-				setTimeout(() => {
-					resolve(true);
-				}, 500);
-			}, 100);
-		});
-		containerAnimation.then(() => {
+		containerAnimation('IN').then(() => {
 			sidePanel.current.classList.remove('hidden');
 			setTimeout(() => {
 				sidePanel.current.style.opacity = 1;
@@ -77,6 +85,19 @@ const Mobile1 = () => {
 		setErrorPinID(false);
 		dispatch(setUser('mobil'));
 		router.push('/konto');
+	};
+	const backHandle = () => {
+		if (screen === 1) {
+			router.push('/steg1');
+			return;
+		}
+		setScreen(screen - 1);
+		containerAnimation('OUT').then(() => {
+			sidePanel.current.style.opacity = 0;
+			setTimeout(() => {
+				sidePanel.current.classList.add('hidden');
+			}, 300);
+		});
 	};
 	return (
 		<>
@@ -103,7 +124,7 @@ const Mobile1 = () => {
 											<label className="text-xl block mb-3">Fødselsdato</label>
 											<input
 												type="text"
-												placeholder="Din Fødselsdato (ddmmåå)"
+												placeholder="Din fødselsdato (ddmmåå)"
 												name="birthDate"
 												className="number-field focus:outline-none border border-gray-300 px-3 py-2 text-xl w-full"
 											/>
@@ -128,7 +149,10 @@ const Mobile1 = () => {
 									<div className="text-2rem text-primary uppercase font-anenirHeavy my-2">
 										{wordFirst} {wordSecond}
 									</div>
-									<strong className="font-anenirHeavy block text-xl">Vennligst følg instruksjonen på mobilen</strong>
+									<p className="text-xl">
+										Bruk denne virtuelle mobilen når du skal løse oppgavene. Bekreft at teksten på PC-skjermen og på mobilen er den samme ved å klikke
+										på «Godta» nederst til høyre på mobilskjermen.
+									</p>
 								</div>
 							)}
 							{screen === 3 && (
@@ -139,14 +163,13 @@ const Mobile1 = () => {
 								</div>
 							)}
 							{screen < 3 && (
-								<Link href="/steg1">
-									<a
-										href="#"
-										className="bg-white p-3 rounded-lg border border-black uppercase text-xl font-anenirHeavy text-black transition w-32 text-center hover:bg-pink block"
-									>
-										Avbryt
-									</a>
-								</Link>
+								<button
+									type="button"
+									onClick={backHandle}
+									className="bg-white p-3 rounded-lg border border-black uppercase text-xl font-anenirHeavy text-black transition w-32 text-center hover:bg-pink block"
+								>
+									Avbryt
+								</button>
 							)}
 						</div>
 					</div>
@@ -165,7 +188,7 @@ const Mobile1 = () => {
 										<div className="flex absolute bottom-1 left-0 w-full p-6">
 											<button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]">Avbryt</button>
 											<button
-												className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF] ml-auto"
+												className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF] ml-auto focus:outline-none"
 												onClick={acceptHandle}
 											>
 												Godta
@@ -181,7 +204,7 @@ const Mobile1 = () => {
 											name="pinId"
 											className="number-field focus:outline-none bg-white w-full h-14 my-3 p-3 text-center text-black text-xl"
 										></input>
-										{errorPinID && <div className="text-red-600 text-sm mb-2">{errorPinID}</div>}
+										{errorPinID && <div className="text-white text-sm mb-2 bg-red-600 p-2">{errorPinID}</div>}
 										<button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]" onClick={sendHandle}>
 											Send
 										</button>

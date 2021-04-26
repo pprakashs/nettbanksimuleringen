@@ -130,21 +130,21 @@ const Transfer = ({ accounts, task, transaction }) => {
 								</button>
 							)}
 						</div>
-						<form className="pb-10" onSubmit={submitHandle}>
+						<form className="pb-10 text-base lg:text-xl" onSubmit={submitHandle}>
 							<div className={`flex ${task.panel ? 'flex-row space-x-6' : 'flex-col'}`}>
 								<div className="w-full">
 									<div className="border border-black-100">
 										<div className="bg-[#E0E0E0] flex">
-											<div className="w-2/3 text-xl font-anenirHeavy px-5 py-2">Overføre fra konto</div>
+											<div className="w-2/3 lg:text-xl text-base font-anenirHeavy lg:px-5 px-3 py-2">Overføre fra konto</div>
 										</div>
 
 										<div className="flex border-t border-black-100">
-											<div className={`p-5 ${task.panel ? 'w-full' : 'w-3/4'}`}>
-												<div className="relative text-xl">
+											<div className={`py-5 lg:px-5 px-3 ${task.panel ? 'w-full' : 'w-3/4'}`}>
+												<div className="relative">
 													<div className="relative">
 														<button
 															type="button"
-															className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left text-xl flex"
+															className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left flex"
 															onClick={selectAccountHandle}
 														>
 															<div>
@@ -186,16 +186,16 @@ const Transfer = ({ accounts, task, transaction }) => {
 
 									<div className="border border-t-0 border-black-100">
 										<div className="bg-[#E0E0E0] flex">
-											<div className="w-2/3 text-xl font-anenirHeavy px-5 py-2">Overføre til konto</div>
+											<div className="w-2/3 font-anenirHeavy lg:px-5 px-3 py-2">Overføre til konto</div>
 										</div>
 
 										<div className="flex border-t border-black-100">
-											<div className={`p-5 ${task.panel ? 'w-full' : 'w-3/4'}`}>
-												<div className="relative text-xl">
+											<div className={`py-5 lg:px-5 px-3 ${task.panel ? 'w-full' : 'w-3/4'}`}>
+												<div className="relative">
 													<div className="relative">
 														<button
 															type="button"
-															className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left text-xl flex"
+															className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left flex"
 															onClick={selectAccountHandle}
 														>
 															<div>
@@ -241,14 +241,14 @@ const Transfer = ({ accounts, task, transaction }) => {
 
 									<div className="border border-black-100 mt-6">
 										<div className="bg-[#E0E0E0] flex">
-											<div className="w-9/12 text-xl font-anenirHeavy px-5 py-2">Egen kommentar</div>
-											<div className="w-3/12 border-l border-black-100 text-xl px-5 py-2">
+											<div className="w-9/12 font-anenirHeavy lg:px-5 px-3 py-2">Egen kommentar</div>
+											<div className="w-3/12 border-l border-black-100 lg:px-5 px-3 py-2">
 												<strong className="font-anenirHeavy">Beløp</strong> (kr og øre)
 											</div>
 										</div>
 
 										<div className="flex border-t border-black-100">
-											<div className="w-9/12 p-5">
+											<div className="w-9/12 py-5 lg:px-5 px-3">
 												<input
 													type="text"
 													name="details"
@@ -257,7 +257,7 @@ const Transfer = ({ accounts, task, transaction }) => {
 												/>
 												<input type="text" name="detailsDefault" defaultValue={!task.completed ? task.payment.details : ''} hidden />
 											</div>
-											<div className="w-3/12 border-l border-black-100 p-5">
+											<div className="w-3/12 border-l border-black-100 py-5 lg:px-5 px-3">
 												<div className="flex space-x-4">
 													<input
 														type="number"

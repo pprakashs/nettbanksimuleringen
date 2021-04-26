@@ -27,17 +27,22 @@ const Transactions = ({ details }) => {
 		<Layout>
 			<section className="bg-white px-7 shadow-md">
 				<div className="pt-10 pb-[200px]">
-					<div className="flex mb-10">
-						<h1>Mine transaksjoner</h1>
+					<div className="mb-10 flex flex-col">
+						<h1 className="mb-6">Mine transaksjoner</h1>
 						<div className="ml-auto flex items-center">
-							<span className="text-xl mr-4">Velg konto:</span>
-							<div className="relative text-xl">
+							<span className="text-base lg:text-xl mr-4">Velg konto:</span>
+							<div className="relative text-base lg:text-xl has-dropdown">
 								<button
 									type="button"
-									className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-11 block border border-secondary rounded"
+									className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-11 border border-secondary flex lg:w-[600px] w-[500px]"
 									onClick={selectAccountHandle}
 								>
-									{selectedAccount.accountNumber} {selectedAccount.accountName}
+									<span>
+										<strong className="font-anenirHeavy">{selectedAccount.accountNumber}</strong> {selectedAccount.accountName}
+									</span>
+									<span className="ml-auto">
+										Disponibelt beløp: <strong className="font-anenirHeavy">{numberFormat(selectedAccount.remainingAmount)}</strong>
+									</span>
 								</button>
 								<i className="absolute top-[22px] right-4 w-6 h-4 pointer-events-none">
 									<img src={require('./../img/down-arrow.svg')} className="w-6" alt="" />
@@ -49,9 +54,12 @@ const Transactions = ({ details }) => {
 											<li key={index}>
 												<button
 													onClick={() => accountChangeHandle(account.accountName)}
-													className="block bg-white border-0 w-full px-3 py-3 hover:bg-pink transition text-left focus:outline-none"
+													className="flex bg-white border-0 w-full px-3 py-3 hover:bg-pink transition  focus:outline-none pr-11"
 												>
-													{account.accountNumber} {account.accountName}
+													<span>
+														{account.accountNumber} {account.accountName}
+													</span>
+													<span className="ml-auto">Disponibelt beløp: {numberFormat(account.remainingAmount)}</span>
 												</button>
 											</li>
 										))}
@@ -59,22 +67,26 @@ const Transactions = ({ details }) => {
 							</div>
 						</div>
 					</div>
-					<table className="table-fixed border-r border-b border-secondary w-full">
+					<table className="table-fixed border-r border-b border-secondary w-full text-base lg:text-xl">
 						<thead>
-							<tr className="border-t border-b border-secondary text-left bg-[#E0E0E0] text-xl">
-								<th className="w-2/5 py-2 px-5 border-l border-secondary font-anenirHeavy">Dato</th>
-								<th className="w-1/5 py-2 px-5 border-l border-secondary font-anenirHeavy pl-5">Forklaring</th>
-								<th className="w-1/5 py-2 px-5 border-l border-secondary text-right font-anenirHeavy">Ut av konto</th>
-								<th className="w-1/5 py-2 px-5 border-l border-secondary text-right font-anenirHeavy">Inn på konto</th>
+							<tr className="border-t border-b border-secondary text-left bg-[#E0E0E0]">
+								<th className="w-1/5 py-2 lg:px-5 px-3 border-l border-secondary font-anenirHeavy">Dato</th>
+								<th className="w-2/5 py-2 lg:px-5 px-3 border-l border-secondary font-anenirHeavy">Forklaring</th>
+								<th className="w-1/5 py-2 lg:px-5 px-3 border-l border-secondary text-right font-anenirHeavy">Ut av konto</th>
+								<th className="w-1/5 py-2 lg:px-5 px-3 border-l border-secondary text-right font-anenirHeavy">Inn på konto</th>
 							</tr>
 						</thead>
 						<tbody>
 							{selectedAccount.transaction.map((el, index) => (
-								<tr className={`text-xl ${index % 2 !== 0 ? 'bg-[#EFEFEF]' : null}`} key={index}>
-									<td className="py-3 px-5 border-l border-secondary align-top">{el.date}</td>
-									<td className="py-3 px-5 border-l border-secondary pl-5 align-top">{el.details}</td>
-									<td className="py-3 px-5 border-l border-secondary text-right align-top">{el.type === 'debit' && '-' + numberFormat(el.amount)}</td>
-									<td className="py-3 px-5 border-l border-secondary text-right align-top">{el.type === 'credit' && numberFormat(el.amount)}</td>
+								<tr className={`${index % 2 !== 0 ? 'bg-[#EFEFEF]' : null}`} key={index}>
+									<td className="py-3 lg:px-5 px-3 border-l border-secondary align-top">{el.date}</td>
+									<td className="py-3 lg:px-5 px-3 border-l border-secondary align-top">{el.details}</td>
+									<td className="py-3 lg:px-5 px-3 border-l border-secondary text-right align-top">
+										{el.type === 'debit' && '-' + numberFormat(el.amount)}
+									</td>
+									<td className="py-3 lg:px-5 px-3 border-l border-secondary text-right align-top text-[#2A68A2]">
+										{el.type === 'credit' && numberFormat(el.amount)}
+									</td>
 								</tr>
 							))}
 						</tbody>

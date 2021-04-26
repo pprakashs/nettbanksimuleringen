@@ -30,11 +30,11 @@ const Header = () => {
 						</li>
 						<li className="ml-4 relative">
 							<button
-								className="bg-primary pl-4 pr-3 text-sm rounded text-white flex items-center font-anenirHeavy focus:outline-none"
+								className="bg-primary pl-4 pr-3 text-sm rounded text-white flex items-center font-anenirHeavy focus:outline-none has-dropdown"
 								onClick={dropdownHandle}
 							>
 								Dagligbank
-								<span className="border-l border-white ml-3 pl-2 py-2">
+								<span className="border-l border-white ml-3 pl-2 py-2 pointer-events-none">
 									<svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
 									</svg>
@@ -72,9 +72,24 @@ const Header = () => {
 								</div>
 							</div>
 						</li>
-						<li className="bg-gray-200 py-2 px-4 text-sm rounded ml-4">Pensjon og forsikring</li>
-						<li className="bg-gray-200 py-2 px-4 text-sm rounded ml-4">Sparing og investering</li>
-						<li className="bg-gray-200 py-2 px-4 text-sm rounded ml-4">Lån</li>
+						<li
+							className="bg-gray-200 py-2 px-4 text-sm rounded ml-4 tooltip cursor-pointer"
+							data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"
+						>
+							Pensjon og forsikring
+						</li>
+						<li
+							className="bg-gray-200 py-2 px-4 text-sm rounded ml-4 tooltip cursor-pointer"
+							data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"
+						>
+							Sparing og investering
+						</li>
+						<li
+							className="bg-gray-200 py-2 px-4 text-sm rounded ml-4 tooltip cursor-pointer"
+							data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"
+						>
+							Lån
+						</li>
 					</ul>
 				</nav>
 			</div>

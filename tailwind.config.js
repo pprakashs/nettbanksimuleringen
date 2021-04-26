@@ -3,6 +3,9 @@ module.exports = {
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		extend: {
+			screens: {
+				lg: '1190px',
+			},
 			container: {
 				center: true,
 				padding: '20px',

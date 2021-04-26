@@ -2,6 +2,17 @@ function hideDB(el) {
 	el.classList.add('hidden');
 	el.classList.add('opacity-0');
 }
+
+function removeTooltip() {
+	document.body.addEventListener('click', (e) => {
+		if (!e.target.classList.contains('has-dropdown')) {
+			document.querySelectorAll('.dropdown').forEach((db) => {
+				// db.classList.add('hidden');
+				// db.classList.add('opacity-0');
+			});
+		}
+	});
+}
 export const dropdown = (selector) => {
 	const currentDP = selector.querySelector('.dropdown');
 
@@ -22,10 +33,5 @@ export const dropdown = (selector) => {
 			});
 		});
 	});
-};
-
-export const bodyClick = () => {
-	document.body.onclick = function (e) {
-		// console.log(e.target);
-	};
+	removeTooltip();
 };

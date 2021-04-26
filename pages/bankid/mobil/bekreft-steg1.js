@@ -87,7 +87,7 @@ const MobileValidation = ({ transaction }) => {
 			<section className="py-20 min-h-screen flex flex-col justify-center">
 				<div className="container max-w-[800px] flex my-6 space-x-6 duration-500 transition-max-width" ref={containerRef}>
 					<div className="w-2/3 xl:w-[800px] bg-white px-10 py-10 shadow-md">
-						<h1 className="mb-6">Logg inn med BankID på mobil</h1>
+						<h1 className="mb-6">Bekreft betaling med BankID på mobil</h1>
 						<div className="border border-gray-300 px-8 py-12 mb-5 min-h-[550px]">
 							{screen === 1 && (
 								<div className="mb-9">

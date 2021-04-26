@@ -1,8 +1,12 @@
+import { useEffect } from 'react';
 import Header from './Header';
-import { useRouter } from 'next/router';
+import tooltip from './../util/tooltip';
 
 const Layout = (props) => {
-	const { pathname } = useRouter();
+	useEffect(() => {
+		tooltip();
+	}, []);
+
 	return (
 		<>
 			<Header />
