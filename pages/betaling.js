@@ -6,6 +6,7 @@ import { dropdown } from '../util/dropdown';
 import { getTodayDate, getDateFuture } from './../util/dates';
 import { numberFormat } from './../util/numberFormat';
 import { setTransaction } from './../redux/actions/transactionAction';
+import { taskPaymentPanel } from './../redux/actions/taskAction';
 import panelAnimation from './../util/panelAnimation';
 
 const Payment = ({ accounts, task, transaction }) => {
