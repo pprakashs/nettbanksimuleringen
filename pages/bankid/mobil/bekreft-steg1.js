@@ -93,7 +93,7 @@ const MobileValidation = ({ transaction }) => {
 									<div className="text-2rem text-primary uppercase font-anenirHeavy my-2">
 										{wordFirst} {wordSecond}
 									</div>
-									<strong className="font-anenirHeavy block text-xl">Vennligst følg instruksjonen på mobilen</strong>
+									<strong className="font-anenirHeavy block text-xl">Vennligst følg instruksjonen på mobilen.</strong>
 								</div>
 							)}
 							{screen === 2 && (
@@ -103,15 +103,6 @@ const MobileValidation = ({ transaction }) => {
 									<strong className="font-anenirHeavy block text-xl">i mobiltelefonen på høyre side</strong>
 								</div>
 							)}
-
-							{/* <Link href="/steg1">
-								<a
-									href="#"
-									className="bg-white p-3 rounded-lg border border-black uppercase text-xl font-anenirHeavy text-black transition w-32 text-center hover:bg-pink block"
-								>
-									Avbryt
-								</a>
-							</Link> */}
 						</div>
 					</div>
 					<div

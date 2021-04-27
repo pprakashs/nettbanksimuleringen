@@ -149,7 +149,7 @@ const Mobile1 = () => {
 									<div className="text-2rem text-primary uppercase font-anenirHeavy my-2">
 										{wordFirst} {wordSecond}
 									</div>
-									<p className="text-xl">Vennligst følg instruksjonen på mobilen</p>
+									<p className="text-xl">Vennligst følg instruksjonen på mobilen.</p>
 								</div>
 							)}
 							{screen === 3 && (
