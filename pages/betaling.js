@@ -212,8 +212,11 @@ const Payment = ({ accounts, task, transaction }) => {
 												name="accountNumber"
 												className="border border-[#B3B3B4] w-full p-3 h-[48px] focus:outline-none"
 											/>
-											<div className="border border-l-0 border-[#B3B3B4] w-[48px] h-[48px] ml-auto flex justify-center items-center">
-												<i>
+											<div
+												className="border border-l-0 border-[#B3B3B4] w-[48px] h-[48px] ml-auto flex justify-center items-center tooltip cursor-pointer"
+												data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"
+											>
+												<i class="pointer-events-none">
 													<img src={require('./../img/book-icon.svg')} alt="" className="w-5" />
 												</i>
 											</div>
@@ -263,8 +266,11 @@ const Payment = ({ accounts, task, transaction }) => {
 									<div className="w-4/12 p-5 py-9 lg:px-5 px-3">
 										<div className="flex">
 											<div className="border border-[#B3B3B4] w-full p-3 h-[48px] focus:outline-none">{getTodayDate()}</div>
-											<div className="border border-l-0 border-[#B3B3B4] w-[48px] h-[48px] ml-auto flex justify-center items-center">
-												<i>
+											<div
+												className="border border-l-0 border-[#B3B3B4] w-[48px] h-[48px] ml-auto flex justify-center items-center tooltip cursor-pointer"
+												data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"
+											>
+												<i className="pointer-events-none">
 													<img src={require('./../img/calendar-Icon.svg')} alt="" className="w-5" />
 												</i>
 											</div>

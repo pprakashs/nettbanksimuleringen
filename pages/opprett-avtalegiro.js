@@ -83,7 +83,7 @@ const CreateAutoPayment = ({ accounts, autoPayments, task }) => {
 													<strong className="font-anenirHeavy">{selectedAccount.accountNumber}</strong> {selectedAccount.accountName}
 												</div>
 												<div className="ml-auto">
-													bekreft overføring: <strong className="font-anenirHeavy">{numberFormat(selectedAccount.remainingAmount)}</strong>
+													Disponibelt beløp: <strong className="font-anenirHeavy">{numberFormat(selectedAccount.remainingAmount)}</strong>
 												</div>
 											</button>
 											<svg
@@ -124,7 +124,7 @@ const CreateAutoPayment = ({ accounts, autoPayments, task }) => {
 																<strong className="font-anenirHeavy">{account.accountNumber}</strong> {account.accountName}
 															</div>
 															<div className="ml-auto">
-																bekreft overføring: <strong className="font-anenirHeavy">{numberFormat(account.remainingAmount)}</strong>
+																Disponibelt beløp: <strong className="font-anenirHeavy">{numberFormat(account.remainingAmount)}</strong>
 															</div>
 														</button>
 													</li>
@@ -153,7 +153,7 @@ const CreateAutoPayment = ({ accounts, autoPayments, task }) => {
 							<div className="bg-[#E0E0E0] flex relative">
 								<div className="w-2/5 lg:px-5 px-3 py-2 flex items-center">
 									<button
-										className="border-2 bg-white mr-3 border-primary rounded-full w-8 h-8 justify-center items-center flex font-bold text-blue tooltip focus:outline-none cursor-pointer tooltip"
+										className="border-2 bg-white mr-3 border-primary rounded-full w-8 h-8 justify-center items-center flex font-bold text-blue focus:outline-none cursor-pointer tooltip"
 										data-tooltip-text="Begrens hva mottaker kan belaste per måned."
 										data-tooltip-bg="bg-pink"
 										type="button"

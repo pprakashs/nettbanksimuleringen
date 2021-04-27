@@ -149,10 +149,7 @@ const Mobile1 = () => {
 									<div className="text-2rem text-primary uppercase font-anenirHeavy my-2">
 										{wordFirst} {wordSecond}
 									</div>
-									<p className="text-xl">
-										Bruk denne virtuelle mobilen når du skal løse oppgavene. Bekreft at teksten på PC-skjermen og på mobilen er den samme ved å klikke
-										på «Godta» nederst til høyre på mobilskjermen.
-									</p>
+									<p className="text-xl">Vennligst følg instruksjonen på mobilen</p>
 								</div>
 							)}
 							{screen === 3 && (
@@ -178,6 +175,10 @@ const Mobile1 = () => {
 						ref={sidePanel}
 					>
 						<div className="intro-text transition duration-300 h-full flex justify-center items-center flex-col">
+							<p className="mb-10 text-sm">
+								Bruk denne virtuelle mobilen når du skal løse oppgavene. Bekreft at teksten på PC-skjermen og på mobilen er den samme ved å klikke på
+								«Godta» nederst til høyre på mobilskjermen.
+							</p>
 							<div className="w-[204px] relative">
 								<img src={require('./../../../img/mobile.png')} className="w-full" alt="" />
 								{screen === 2 && (
@@ -212,11 +213,6 @@ const Mobile1 = () => {
 								)}
 							</div>
 						</div>
-						<button className="text-black w-6 h-6 absolute top-3 right-3 focus:outline-none">
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-							</svg>
-						</button>
 					</div>
 				</div>
 			</section>
