@@ -144,13 +144,13 @@ const Transfer = ({ accounts, task, transaction }) => {
 													<div className="relative">
 														<button
 															type="button"
-															className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left flex"
+															className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left flex has-dropdown"
 															onClick={selectAccountHandle}
 														>
-															<div>
+															<div className="pointer-events-none">
 																<strong className="font-anenirHeavy">{transferFormAccount.accountNumber}</strong> {transferFormAccount.accountName}
 															</div>
-															<div className="ml-auto">
+															<div className="ml-auto pointer-events-none">
 																Disponibel saldo: <strong className="font-anenirHeavy">{numberFormat(transferFormAccount.remainingAmount)}</strong>
 															</div>
 														</button>
@@ -195,13 +195,13 @@ const Transfer = ({ accounts, task, transaction }) => {
 													<div className="relative">
 														<button
 															type="button"
-															className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left flex"
+															className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left flex has-dropdown"
 															onClick={selectAccountHandle}
 														>
-															<div>
+															<div className="pointer-events-none">
 																<strong className="font-anenirHeavy">{transferToAccount.accountNumber}</strong> {transferToAccount.accountName}
 															</div>
-															<div className="ml-auto">
+															<div className="ml-auto pointer-events-none">
 																Disponibelt beløp: <strong className="font-anenirHeavy">{numberFormat(transferToAccount.remainingAmount)}</strong>
 															</div>
 														</button>

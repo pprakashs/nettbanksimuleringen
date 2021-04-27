@@ -10,9 +10,7 @@ import { setTransaction } from './../../../redux/actions/transactionAction';
 const MobileValidation = ({ transaction }) => {
 	const containerRef = useRef();
 	const sidePanel = useRef();
-	const formRef = useRef();
-	const [errorMobileNumber, setErrorMobileNumber] = useState(false);
-	const [errorDateBirth, setErrorDateBirth] = useState(false);
+
 	const [errorPinID, setErrorPinID] = useState(false);
 	const [screen, setScreen] = useState(1);
 	const router = useRouter();

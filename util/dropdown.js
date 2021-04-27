@@ -7,8 +7,8 @@ function removeTooltip() {
 	document.body.addEventListener('click', (e) => {
 		if (!e.target.classList.contains('has-dropdown')) {
 			document.querySelectorAll('.dropdown').forEach((db) => {
-				// db.classList.add('hidden');
-				// db.classList.add('opacity-0');
+				db.classList.add('hidden');
+				db.classList.add('opacity-0');
 			});
 		}
 	});

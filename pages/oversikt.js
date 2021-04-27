@@ -34,13 +34,13 @@ const Transactions = ({ details }) => {
 							<div className="relative text-base lg:text-xl has-dropdown">
 								<button
 									type="button"
-									className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-11 border border-secondary flex lg:w-[600px] w-[500px]"
+									className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-11 border border-secondary flex lg:w-[600px] w-[500px] flex has-dropdown"
 									onClick={selectAccountHandle}
 								>
-									<span>
+									<span className="pointer-events-none">
 										<strong className="font-anenirHeavy">{selectedAccount.accountNumber}</strong> {selectedAccount.accountName}
 									</span>
-									<span className="ml-auto">
+									<span className="ml-auto pointer-events-none">
 										Disponibelt beløp: <strong className="font-anenirHeavy">{numberFormat(selectedAccount.remainingAmount)}</strong>
 									</span>
 								</button>

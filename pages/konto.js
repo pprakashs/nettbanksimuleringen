@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -7,27 +6,7 @@ import Layout from '../components/Layout';
 import { setAccount } from './../redux/actions/accountsAction';
 
 const Account = ({ accounts }) => {
-	const [tooltip, setTooltip] = useState(false);
-	const [tooltipId, setTooltipId] = useState(null);
-	const tooltipRef = useRef();
 	const dispatch = useDispatch();
-
-	// const tooltipHandle = (e) => {
-	// 	const { clientX, clientY } = e;
-
-	// 	setTooltipId(e.currentTarget.getAttribute('data-tip'));
-	// 	tooltipRef.current.style.top = clientY - 100 + 'px';
-	// 	tooltipRef.current.style.left = clientX - 170 + 'px';
-	// 	if (tooltipId === e.currentTarget.getAttribute('data-tip')) {
-	// 		setTooltip(false);
-	// 		e.currentTarget.setAttribute('data-tip', e.currentTarget.getAttribute('data-tip') + 'px');
-	// 		setTimeout(() => {
-	// 			tooltipRef.current.style.top = '0px';
-	// 		}, 400);
-	// 		return;
-	// 	}
-	// 	setTooltip(true);
-	// };
 
 	const clickHandle = (e) => {
 		dispatch(setAccount(e));

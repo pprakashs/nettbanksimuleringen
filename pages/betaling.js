@@ -5,8 +5,6 @@ import Layout from '../components/Layout';
 import { dropdown } from '../util/dropdown';
 import { getTodayDate, getDateFuture } from './../util/dates';
 import { numberFormat } from './../util/numberFormat';
-import { createPayment, setAccount } from './../redux/actions/accountsAction';
-import { taskPaymentCreated, taskPaymentPanel } from './../redux/actions/taskAction';
 import { setTransaction } from './../redux/actions/transactionAction';
 import panelAnimation from './../util/panelAnimation';
 
@@ -23,10 +21,6 @@ const Payment = ({ accounts, task, transaction }) => {
 	let amountStr = null;
 	let details = '';
 
-	// if (!task.completed) {
-	// 	amountStr = task.payment.amount.toString().split('.');
-	// 	details = task.payment.kidNumber;
-	// }
 	if (transaction !== null && transaction.paymentType === 'payment') {
 		amountStr = transaction.amount.toString().split('.');
 		details = transaction.kidNumber;
@@ -147,14 +141,14 @@ const Payment = ({ accounts, task, transaction }) => {
 											<div className="relative">
 												<button
 													type="button"
-													className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left flex"
+													className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left flex has-dropdown"
 													onClick={selectAccountHandle}
 												>
-													<div>
+													<div className="pointer-events-none">
 														{!task.panel && <strong className="font-anenirHeavy">{selectedAccount.accountNumber}</strong>}{' '}
 														{selectedAccount.accountName}
 													</div>
-													<div className="ml-auto">
+													<div className="ml-auto pointer-events-none">
 														Disponibelt beløp: <strong className="font-anenirHeavy">{numberFormat(selectedAccount.remainingAmount)}</strong>
 													</div>
 												</button>
@@ -216,7 +210,7 @@ const Payment = ({ accounts, task, transaction }) => {
 												className="border border-l-0 border-[#B3B3B4] w-[48px] h-[48px] ml-auto flex justify-center items-center tooltip cursor-pointer"
 												data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"
 											>
-												<i class="pointer-events-none">
+												<i className="pointer-events-none">
 													<img src={require('./../img/book-icon.svg')} alt="" className="w-5" />
 												</i>
 											</div>

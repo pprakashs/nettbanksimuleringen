@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -76,13 +76,13 @@ const CreateAutoPayment = ({ accounts, autoPayments, task }) => {
 										<div className="relative">
 											<button
 												type="button"
-												className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left flex"
+												className="selected-account focus:outline-none cursor-pointer px-3 py-[10px] pr-14 border border-[#B3B3B4] w-full text-left flex has-dropdown"
 												onClick={selectAccountHandle}
 											>
-												<div>
+												<div className="pointer-events-none">
 													<strong className="font-anenirHeavy">{selectedAccount.accountNumber}</strong> {selectedAccount.accountName}
 												</div>
-												<div className="ml-auto">
+												<div className="ml-auto pointer-events-none">
 													Disponibelt beløp: <strong className="font-anenirHeavy">{numberFormat(selectedAccount.remainingAmount)}</strong>
 												</div>
 											</button>
@@ -133,12 +133,6 @@ const CreateAutoPayment = ({ accounts, autoPayments, task }) => {
 									</div>
 								</div>
 								<div className="w-1/3 border-l border-black-100 py-5 lg:px-5 px-3">
-									{/* {Object.entries(selectedAutoPayment).length > 0 && (
-										<div className="flex text-base items-left flex-col">
-											<span className="text-xl">{selectedAutoPayment.name}</span>
-											Kontonummer: {selectedAutoPayment.accountNumber}
-										</div>
-									)} */}
 									{autoPayments.selectedAutoPaymentSuggestion !== null && (
 										<div className="flex text-base items-left flex-col">
 											<span>{autoPayments.selectedAutoPaymentSuggestion.name}</span>

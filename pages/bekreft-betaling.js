@@ -16,8 +16,6 @@ const PaymentReview = ({ transaction, user }) => {
 		if (transaction === null) router.push('/betaling');
 	}, []);
 
-	console.log(user);
-
 	const submitHandle = () => {
 		router.push(`/bankid/${user.verifiedType}/bekreft-steg1`);
 	};
