@@ -3,7 +3,7 @@ import { connect, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import { dropdown } from '../util/dropdown';
-import { getTodayDate, getDateFuture } from './../util/dates';
+import { getTodayFullDate, getDateFuture } from './../util/dates';
 import { numberFormat } from './../util/numberFormat';
 import { setTransaction } from './../redux/actions/transactionAction';
 import { taskPaymentPanel } from './../redux/actions/taskAction';
@@ -57,14 +57,13 @@ const Payment = ({ accounts, task, transaction }) => {
 		setSidebar(true);
 		if (!task.completed) panelAnimation(containerRef, sidePanel);
 	};
-
 	const submitHandle = (e) => {
 		e.preventDefault();
 		const target = e.target.elements;
 		const amount = `${target.amount.value}.${target.amountCent.value}`;
 		const amountInt = amount * 1;
 
-		if (!task.completed && task.payment.accountNumber !== target.accountNumber.value) {
+		if (!task.completed && !task.payment.accountNumber.includes(target.accountNumber.value)) {
 			setError('Kontonummeret stemmer ikke med regningen');
 			return;
 		}
@@ -260,7 +259,7 @@ const Payment = ({ accounts, task, transaction }) => {
 								<div className="flex border-t border-black-100">
 									<div className="w-4/12 p-5 py-9 lg:px-5 px-3">
 										<div className="flex">
-											<div className="border border-[#B3B3B4] w-full p-3 h-[48px] focus:outline-none">{getTodayDate()}</div>
+											<div className="border border-[#B3B3B4] w-full p-3 h-[48px] focus:outline-none">{getTodayFullDate()}</div>
 											<div
 												className="border border-l-0 border-[#B3B3B4] w-[48px] h-[48px] ml-auto flex justify-center items-center tooltip cursor-pointer"
 												data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"

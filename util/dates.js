@@ -25,3 +25,6 @@ export const getDateFuture = (value) => {
 export const getTodayDate = () => {
 	return `${getSlice(date.getDate())}.${months[date.getMonth()]}.${date.getFullYear().toString().substr(-2)}`;
 };
+export const getTodayFullDate = () => {
+	return `${getSlice(date.getDate())}.${months[date.getMonth()]}.${date.getFullYear()}`;
+};

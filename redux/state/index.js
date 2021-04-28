@@ -170,7 +170,7 @@ export const taskInitialState = {
 		panel: true,
 		payment: {
 			name: 'Se på TV',
-			accountNumber: '3456.12.12345',
+			accountNumber: ['3456.12.12345', '34561212345'],
 			kidNumber: '70018230419',
 			amount: 139.9,
 		},

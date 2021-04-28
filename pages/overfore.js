@@ -72,6 +72,8 @@ const Transfer = ({ accounts, task, transaction }) => {
 		const amount = `${target.amount.value}.${target.amountCent.value}`;
 		const amountInt = amount * 1;
 
+		console.log(amountInt);
+
 		if (!task.completed && transferFormAccount.accountName !== 'Brukskonto' && transferToAccount.accountName !== 'Sparekonto') {
 			setError('Du må overføre fra "Brukskonto" til "Sparekonto".');
 			return;
@@ -91,6 +93,10 @@ const Transfer = ({ accounts, task, transaction }) => {
 		}
 		if (amount === '.') {
 			setError('Beløp må fylles ut.');
+			return;
+		}
+		if (amountInt < 0 || amountInt === 0) {
+			setError('Beløpet må være "positivt".');
 			return;
 		}
 		details = target.details.value;
