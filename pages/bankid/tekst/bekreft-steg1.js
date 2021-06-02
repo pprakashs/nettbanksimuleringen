@@ -6,6 +6,7 @@ import Header from './../../../components/Header';
 import { createPayment, setAccount } from './../../../redux/actions/accountsAction';
 import { taskPaymentCreated } from './../../../redux/actions/taskAction';
 import { setTransaction } from './../../../redux/actions/transactionAction';
+import { getRandomKey } from './../../../util/getRandomNumber';
 
 const TextValidation = ({ transaction }) => {
 	const containerRef = useRef();
@@ -13,7 +14,7 @@ const TextValidation = ({ transaction }) => {
 	const formRef2 = useRef();
 	const [error, setError] = useState(false);
 	const router = useRouter();
-	const keyCode = '123456';
+	const keyCode = getRandomKey();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -42,7 +43,7 @@ const TextValidation = ({ transaction }) => {
 		e.preventDefault();
 		const val = formRef2.current.querySelector('input[name="keyCode"]').value;
 		if (val === '') {
-			setError('Vennligst fyll inn koden fra kodebrikken');
+			setError('Vennligst fyll inn koden fra kodebrikken.');
 			return;
 		}
 		if (val !== keyCode) {

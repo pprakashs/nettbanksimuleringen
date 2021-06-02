@@ -23,9 +23,7 @@ const Transfer = ({ accounts, task, transaction }) => {
 
 	let amountStr = null;
 	let details = '';
-	// if (!task.completed && details === '') {
-	// 	details = task.payment.details;
-	// }
+
 	if (transaction !== null && transaction.paymentType === 'transfer') {
 		details = transaction.details;
 		amountStr = transaction.amount.toString().split('.');
@@ -72,23 +70,21 @@ const Transfer = ({ accounts, task, transaction }) => {
 		const amount = `${target.amount.value}.${target.amountCent.value}`;
 		const amountInt = amount * 1;
 
-		console.log(amountInt);
-
 		if (!task.completed && transferFormAccount.accountName !== 'Brukskonto' && transferToAccount.accountName !== 'Sparekonto') {
 			setError('Du må overføre fra "Brukskonto" til "Sparekonto".');
 			return;
 		}
 
 		if (!task.completed && task.payment.amount !== amountInt) {
-			setError('Beløpet stemmer ikke med regningen');
+			setError('Beløpet stemmer ikke med regningen.');
 			return;
 		}
 		if (!task.completed && amountInt > task.payment.amount) {
-			setError('Du kan ikke overføre mer enn det du har tilgjengelig på konto');
+			setError('Du kan ikke overføre mer enn det du har tilgjengelig på konto.');
 			return;
 		}
 		if (amountInt > transferFormAccount.remainingAmount) {
-			setError('Du kan ikke overføre mer enn det du har tilgjengelig på konto');
+			setError('Du kan ikke overføre mer enn det du har tilgjengelig på konto.');
 			return;
 		}
 		if (amount === '.') {

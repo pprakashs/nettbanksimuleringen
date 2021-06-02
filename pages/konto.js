@@ -1,13 +1,17 @@
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { numberFormat } from './../util/numberFormat';
 import Layout from '../components/Layout';
 import { setAccount } from './../redux/actions/accountsAction';
+import { setScreen } from '../redux/actions/activeBankIdAction';
 
 const Account = ({ accounts }) => {
 	const dispatch = useDispatch();
-
+	useEffect(() => {
+		dispatch(setScreen(1));
+	}, []);
 	const clickHandle = (e) => {
 		dispatch(setAccount(e));
 	};

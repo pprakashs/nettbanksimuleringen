@@ -64,24 +64,24 @@ const Payment = ({ accounts, task, transaction }) => {
 		const amountInt = amount * 1;
 
 		if (!task.completed && !task.payment.accountNumber.includes(target.accountNumber.value)) {
-			setError('Kontonummeret stemmer ikke med regningen');
+			setError('Kontonummeret stemmer ikke med regningen.');
 			return;
 		}
 		if (!task.completed && task.payment.kidNumber !== target.details.value) {
-			setError('Kidnummer stemmer ikke med regningen');
+			setError('Kidnummer stemmer ikke med regningen.');
 			return;
 		}
 		if (!task.completed && task.payment.amount !== amountInt) {
-			setError('Beløpet stemmer ikke med regningen');
+			setError('Beløpet stemmer ikke med regningen.');
 			return;
 		}
 
 		if ((!task.completed && target.accountNumber.value === '') || target.accountNumber.value.length < 11) {
-			setError('Kontonummer må inneholde 11 siffer');
+			setError('Kontonummer må inneholde 11 siffer.');
 			return;
 		}
 		if (!task.completed && amountInt > task.payment.amount) {
-			setError('Du kan ikke overføre mer enn det du har tilgjengelig på konto');
+			setError('Du kan ikke overføre mer enn det du har tilgjengelig på konto.');
 			return;
 		}
 		if (amount === '.') {
@@ -89,7 +89,11 @@ const Payment = ({ accounts, task, transaction }) => {
 			return;
 		}
 		if (amountInt > selectedAccount.remainingAmount) {
-			setError('Du kan ikke overføre mer enn det du har tilgjengelig på konto');
+			setError('Du kan ikke overføre mer enn det du har tilgjengelig på konto.');
+			return;
+		}
+		if (target.navn.value === '') {
+			setError('Mottakers navn må fylles ut.');
 			return;
 		}
 		details = target.details.value;
@@ -101,7 +105,7 @@ const Payment = ({ accounts, task, transaction }) => {
 			selectedAccountNumber: selectedAccount.accountNumber,
 			transferAccountNumber: target.accountNumber.value,
 			amount: amount * 1,
-			details: details,
+			details: target.navn.value,
 			kidNumber: target.details.value,
 			type: 'debit',
 			paymentType: 'payment',
@@ -208,7 +212,7 @@ const Payment = ({ accounts, task, transaction }) => {
 											/>
 											<div
 												className="border border-l-0 border-[#B3B3B4] w-[48px] h-[48px] ml-auto flex justify-center items-center tooltip cursor-pointer"
-												data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"
+												data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen."
 											>
 												<i className="pointer-events-none">
 													<img src={require('./../img/book-icon.svg')} alt="" className="w-5" />
@@ -262,7 +266,7 @@ const Payment = ({ accounts, task, transaction }) => {
 											<div className="border border-[#B3B3B4] w-full p-3 h-[48px] focus:outline-none">{getTodayFullDate()}</div>
 											<div
 												className="border border-l-0 border-[#B3B3B4] w-[48px] h-[48px] ml-auto flex justify-center items-center tooltip cursor-pointer"
-												data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"
+												data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen."
 											>
 												<i className="pointer-events-none">
 													<img src={require('./../img/calendar-Icon.svg')} alt="" className="w-5" />

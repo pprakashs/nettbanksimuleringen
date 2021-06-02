@@ -20,3 +20,8 @@ export const AUTO_PAYMENT_PANEL = 'AUTO_PAYMENT_PANEL';
 export const AUTO_PAYMENT_CREATED = 'AUTO_PAYMENT_CREATED';
 
 export const SET_TRANSACTION = 'SET_TRANSACTION';
+
+export const SET_SCREEN = 'SET_SCREEN';
+export const SET_ERROR = 'SET_ERROR';
+export const SET_PASSWORD = 'SET_PASSWORD';
+export const SET_PIN_CODE = 'SET_PIN_CODE';

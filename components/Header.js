@@ -55,16 +55,17 @@ const Header = () => {
 										</li>
 										<li>
 											<Link href="/overfore">
-												<a href="#" className="block px-3 py-2 text-base hover:bg-pink transition">
-													Overføre egen kontoer
-												</a>
+												<a className="block px-3 py-2 text-base hover:bg-pink transition">Overføre egen kontoer</a>
 											</Link>
 										</li>
 										<li>
 											<Link href="/avtalegiro">
-												<a href="#" className="block px-3 py-2 text-base hover:bg-pink transition">
-													Avtalegiro
-												</a>
+												<a className="block px-3 py-2 text-base hover:bg-pink transition">Avtalegiro</a>
+											</Link>
+										</li>
+										<li>
+											<Link href="/aktiver-bankid">
+												<a className="block px-3 py-2 text-base hover:bg-pink transition">Aktiver BankID på mobil</a>
 											</Link>
 										</li>
 									</ul>
@@ -73,19 +74,19 @@ const Header = () => {
 						</li>
 						<li
 							className="bg-gray-200 py-2 px-4 text-sm rounded ml-4 tooltip cursor-pointer"
-							data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"
+							data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen."
 						>
 							Pensjon og forsikring
 						</li>
 						<li
 							className="bg-gray-200 py-2 px-4 text-sm rounded ml-4 tooltip cursor-pointer"
-							data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"
+							data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen."
 						>
 							Sparing og investering
 						</li>
 						<li
 							className="bg-gray-200 py-2 px-4 text-sm rounded ml-4 tooltip cursor-pointer"
-							data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen"
+							data-tooltip-text="Denne funksjonen er dessverre ikke aktiv i nettbanksimuleringen."
 						>
 							Lån
 						</li>

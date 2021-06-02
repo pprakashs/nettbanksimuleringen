@@ -3,14 +3,7 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import HeaderSecondary from '../../../components/HeaderSecondary';
 import setUser from './../../../redux/actions/userAction';
-
-const getRandomKey = () => {
-	var x = '';
-	for (var i = 0; i < 6; i++) {
-		x += Math.floor(Math.random() * 6) + 1;
-	}
-	return x;
-};
+import { getRandomKey } from './../../../util/getRandomNumber';
 
 const Step2 = () => {
 	const containerRef = useRef();
@@ -69,11 +62,11 @@ const Step2 = () => {
 		e.preventDefault();
 		const val = formRef2.current.querySelector('input[name="keyCode"]').value;
 		if (val === '') {
-			setError('Vennligst fyll inn koden fra kodebrikken');
+			setError('Vennligst fyll inn koden fra kodebrikken.');
 			return;
 		}
 		if (val !== keyCode) {
-			setError('Koden må stemme med kodebrikken!');
+			setError('Koden må stemme med kodebrikken!.');
 			return;
 		}
 		// setError(null);

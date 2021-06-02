@@ -1,8 +1,8 @@
 import { getDate } from '../../util/dates';
 
 export const userInitialState = {
-	loggedIn: true,
-	verifiedType: 'tekst',
+	loggedIn: false,
+	verifiedType: null,
 };
 
 export const accountInitialState = {
@@ -192,3 +192,9 @@ export const taskInitialState = {
 };
 
 export const transactionInitialState = null;
+
+export const activeBankIDInitialState = {
+	screen: 1,
+	error: false,
+	pinCode: null,
+};

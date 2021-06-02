@@ -75,11 +75,11 @@ const Mobile1 = () => {
 	const sendHandle = () => {
 		let pinIdVal = containerRef.current.querySelector('input[name="pinId"]').value;
 		if (pinIdVal === '') {
-			setErrorPinID('Skriv inn riktig kode');
+			setErrorPinID('Skriv inn riktig kode.');
 			return;
 		}
 		if (pinID !== parseInt(pinIdVal)) {
-			setErrorPinID('Skriv inn riktig kode');
+			setErrorPinID('Skriv inn riktig kode.');
 			return;
 		}
 		setErrorPinID(false);

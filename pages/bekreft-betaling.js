@@ -3,7 +3,7 @@ import { connect, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
 import { numberFormat } from './../util/numberFormat';
-import { getTodayDate } from './../util/dates';
+import { getTodayFullDate } from './../util/dates';
 
 import Layout from '../components/Layout';
 import { taskPaymentPanel } from './../redux/actions/taskAction';
@@ -65,7 +65,7 @@ const PaymentReview = ({ transaction, user }) => {
 					</div>
 
 					<div className="flex border-t border-black-100 bg-pink">
-						<div className="w-4/12 lg:px-5 px-3 py-12">{transaction !== null && getTodayDate()}</div>
+						<div className="w-4/12 lg:px-5 px-3 py-12">{transaction !== null && getTodayFullDate()}</div>
 						<div className="w-7/12 lg:px-5 px-3 py-12 border-l border-black-100">{transaction !== null && transaction.kidNumber}</div>
 						<div className="w-4/12 border-l border-black-100 lg:px-5 px-3 py-12">{transaction !== null && numberFormat(transaction.amount)}</div>
 					</div>

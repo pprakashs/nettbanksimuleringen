@@ -71,7 +71,7 @@ const Transactions = ({ details }) => {
 						<thead>
 							<tr className="border-t border-b border-secondary text-left bg-[#E0E0E0]">
 								<th className="w-1/5 py-2 lg:px-5 px-3 border-l border-secondary font-anenirHeavy">Dato</th>
-								<th className="w-2/5 py-2 lg:px-5 px-3 border-l border-secondary font-anenirHeavy">Forklaring</th>
+								<th className="w-2/5 py-2 lg:px-5 px-3 border-l border-secondary font-anenirHeavy">Mottaker</th>
 								<th className="w-1/5 py-2 lg:px-5 px-3 border-l border-secondary text-right font-anenirHeavy">Ut av konto</th>
 								<th className="w-1/5 py-2 lg:px-5 px-3 border-l border-secondary text-right font-anenirHeavy">Inn på konto</th>
 							</tr>

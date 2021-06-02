@@ -55,11 +55,11 @@ const MobileValidation = ({ transaction }) => {
 	const sendHandle = () => {
 		let pinIdVal = containerRef.current.querySelector('input[name="pinId"]').value;
 		if (pinIdVal === '') {
-			setErrorPinID('Pin Id is Required!');
+			setErrorPinID('Fyll inn PIN-kode.');
 			return;
 		}
 		if (pinID !== parseInt(pinIdVal)) {
-			setErrorPinID('Pin Id did not match!');
+			setErrorPinID('Skriv inn riktig kode.');
 			return;
 		}
 		setErrorPinID(false);

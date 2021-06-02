@@ -4,6 +4,7 @@ import autoPaymentsReducer from './autoPayments';
 import taskReducer from './task';
 import userReducer from './user';
 import transactionReducer from './transaction';
+import activeBankIdReducer from './activeBankId';
 
 const allReducer = combineReducers({
 	accounts: accountsReducer,
@@ -11,6 +12,7 @@ const allReducer = combineReducers({
 	task: taskReducer,
 	user: userReducer,
 	transaction: transactionReducer,
+	activeBankId: activeBankIdReducer,
 });
 
 export default allReducer;
