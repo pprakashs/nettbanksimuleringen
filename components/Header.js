@@ -55,7 +55,7 @@ const Header = () => {
 										</li>
 										<li>
 											<Link href="/overfore">
-												<a className="block px-3 py-2 text-base hover:bg-pink transition">Overføre egen kontoer</a>
+												<a className="block px-3 py-2 text-base hover:bg-pink transition">Overføre egne kontoer</a>
 											</Link>
 										</li>
 										<li>
