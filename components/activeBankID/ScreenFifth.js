@@ -12,23 +12,27 @@ const ScreenFifth = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const containerAnimation = new Promise((resolve, reject) => {
-      if (containerRef.current !== null) {
-        containerRef.current.style.maxWidth = '1215px';
-        setTimeout(() => {
-          resolve(true);
-        }, 500);
-      }
-    });
-    containerAnimation.then(() => {
-      if (sidePanel.current !== null) {
-        sidePanel.current.classList.remove('hidden');
-        setTimeout(() => {
-          sidePanel.current.style.opacity = 1;
-        }, 50);
-      }
-    });
-  }, []);
+    if (step > 1) {
+      const containerAnimation = new Promise((resolve, reject) => {
+        if (containerRef.current !== null) {
+          containerRef.current.style.maxWidth = '1215px';
+          setTimeout(() => {
+            resolve(true);
+          }, 500);
+        }
+      });
+      containerAnimation.then(() => {
+        if (sidePanel.current !== null) {
+          sidePanel.current.classList.remove('hidden');
+          setTimeout(() => {
+            sidePanel.current.style.opacity = 1;
+          }, 50);
+        }
+      });
+    } else {
+      containerRef.current.style.maxWidth = '790px';
+    }
+  }, [step]);
 
   const submitHandle = (e) => {
     e.preventDefault();
@@ -37,12 +41,13 @@ const ScreenFifth = () => {
     dispatch(setError(false));
   };
   const handleBack = () => {
-    sidePanel.current.style.opacity = 0;
-    setTimeout(() => {
-      sidePanel.current.classList.add('hidden');
-      containerRef.current.style.maxWidth = '790px';
-      dispatch(setScreen(screen - 1));
-    }, 400);
+    // sidePanel.current.style.opacity = 0;
+    // setTimeout(() => {
+    //   sidePanel.current.classList.add('hidden');
+    //   containerRef.current.style.maxWidth = '790px';
+
+    // }, 400);
+    dispatch(setScreen(screen - 1));
   };
   const pinID = 86548632;
   const sendHandle = (e) => {
@@ -99,49 +104,54 @@ const ScreenFifth = () => {
           )}
         </div>
       </div>
-      <div className="border border-secondary bg-[#CEEBF5] p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
-        <div className="h-full w-full flex flex-col justify-center items-center">
-          <div className="w-[204px] relative">
-            <img src={require('./../../img/mobile.png')} className="w-full" alt="" />
-            {step === 1 && <Loader />}
-            {step === 2 && (
-              <div className="absolute top-0 left-0 bottom-0 right-0 text-center p-5 flex justify-center items-center flex-col">
-                <p className="text-white">Du skal nå velge din personlige PIN-kode for BankID på mobil (4-8 siffer). Bekreft for å gå videre.</p>
-                <div className="flex flex-col mt-14">
-                  <button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]" onClick={() => setStep(step + 1)}>
-                    Bekreft
-                  </button>
-                  <button
-                    className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF] ml-auto focus:outline-none mt-5"
-                    onClick={() => setStep(step - 1)}
-                  >
-                    Avbryt
-                  </button>
-                </div>
-              </div>
-            )}
-            {step === 3 && (
-              <div className="absolute top-0 left-0 bottom-0 right-0 text-center p-5 flex justify-center items-center flex-col">
-                <p className="text-white">Tast inn aktiveringskoden du har fått oppgitt i nettbanken:</p>
-                <div className="flex flex-col mt-10">
-                  <form onSubmit={sendHandle}>
-                    <label className="text-white block">Tast inn kode (8 sifre)</label>
-                    <input
-                      type="number"
-                      name="pinId"
-                      className="number-field focus:outline-none bg-white w-full h-14 my-3 p-3 text-center text-black text-xl"
-                    ></input>
-                    {error && <div className="text-white text-sm mb-2 bg-red-600 p-2">{error}</div>}
-                    <button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]" type="submit">
-                      Send
+      {step > 1 && (
+        <div className="border border-secondary bg-[#CEEBF5] p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
+          <div className="h-full w-full flex flex-col justify-center items-center">
+            <div className="w-[204px] relative">
+              <img src={require('./../../img/mobile.png')} className="w-full" alt="" />
+
+              {step === 2 && (
+                <div className="absolute top-0 left-0 bottom-0 right-0 text-center p-5 flex justify-center items-center flex-col">
+                  <p className="text-white">Du skal nå velge din personlige PIN-kode for BankID på mobil (4-8 siffer). Bekreft for å gå videre.</p>
+                  <div className="flex flex-col mt-14">
+                    <button
+                      className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]"
+                      onClick={() => setStep(step + 1)}
+                    >
+                      Bekreft
                     </button>
-                  </form>
+                    <button
+                      className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF] ml-auto focus:outline-none mt-5"
+                      onClick={() => setStep(step - 1)}
+                    >
+                      Avbryt
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+              {step === 3 && (
+                <div className="absolute top-0 left-0 bottom-0 right-0 text-center p-5 flex justify-center items-center flex-col">
+                  <p className="text-white">Tast inn aktiveringskoden du har fått oppgitt i nettbanken:</p>
+                  <div className="flex flex-col mt-10">
+                    <form onSubmit={sendHandle}>
+                      <label className="text-white block">Tast inn kode (8 sifre)</label>
+                      <input
+                        type="number"
+                        name="pinId"
+                        className="number-field focus:outline-none bg-white w-full h-14 my-3 p-3 text-center text-black text-xl"
+                      ></input>
+                      {error && <div className="text-white text-sm mb-2 bg-red-600 p-2">{error}</div>}
+                      <button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]" type="submit">
+                        Send
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
