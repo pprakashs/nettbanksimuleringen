@@ -95,8 +95,11 @@ const ScreenFirst = () => {
       <div className="border border-secondary bg-[#CEEBF5] p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
         <div className="intro-text transition duration-300">
           <h1 className="mb-5">Oppgavetekst</h1>
-          <p className="text-base max-w-[250px]">Du ønsker å aktivere BankID på mobil for ditt mobilnummer.</p>
-
+          <p className="text-base max-w-[250px] pb-8">Du ønsker å aktivere BankID på mobil for ditt mobilnummer.</p>
+          <p className="text-base max-w-[250px]">
+            Obs! Når du skal aktivere BankID på mobil i egen nettbank må du logge inn i nettbanken med kodebrikke for å kunne gjennomføre
+            aktiveringen.
+          </p>
           <button className="text-black w-6 h-6 absolute top-3 right-3 focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
