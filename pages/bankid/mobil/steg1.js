@@ -91,17 +91,20 @@ const Mobile1 = () => {
       router.push('/steg1');
       return;
     }
+    if (screen === 2) {
+      containerAnimation('OUT').then(() => {
+        sidePanel.current.style.opacity = 0;
+        setTimeout(() => {
+          sidePanel.current.classList.add('hidden');
+        }, 300);
+      });
+    }
     setScreen(screen - 1);
-    containerAnimation('OUT').then(() => {
-      sidePanel.current.style.opacity = 0;
-      setTimeout(() => {
-        sidePanel.current.classList.add('hidden');
-      }, 300);
-    });
   };
   return (
     <>
       <HeaderSecondary />
+      {console.log(screen)}
       <section className="py-20 min-h-screen flex flex-col justify-center">
         <div className="container max-w-[800px] flex my-6 space-x-6 duration-500 transition-max-width" ref={containerRef}>
           <div className="w-2/3 xl:w-[800px] bg-white px-10 py-10 shadow-md">
@@ -208,9 +211,15 @@ const Mobile1 = () => {
                       className="number-field focus:outline-none bg-white w-full h-14 my-3 p-3 text-center text-black text-xl"
                     ></input>
                     {errorPinID && <div className="text-white text-sm mb-2 bg-red-600 p-2">{errorPinID}</div>}
-                    <button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]" onClick={sendHandle}>
-                      Send
-                    </button>
+
+                    <div className="flex justify-center w-full space-x-6">
+                      <button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]" onClick={backHandle}>
+                        Avbryt
+                      </button>
+                      <button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]" onClick={sendHandle}>
+                        Send
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

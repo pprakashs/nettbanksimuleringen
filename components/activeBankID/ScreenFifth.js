@@ -112,7 +112,9 @@ const ScreenFifth = () => {
 
               {step === 2 && (
                 <div className="absolute top-0 left-0 bottom-0 right-0 text-center p-5 flex justify-center items-center flex-col">
-                  <p className="text-white">Du skal nå velge din personlige PIN-kode for BankID på mobil (4-8 siffer). Bekreft for å gå videre.</p>
+                  <p className="text-white">
+                    Du skal nå aktivere BankID på mobil ved å taste inn aktiveringskoden i neste skjermbilde. Bekreft for å gå videre.{' '}
+                  </p>
                   <div className="flex flex-col mt-14">
                     <button
                       className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]"
@@ -141,9 +143,18 @@ const ScreenFifth = () => {
                         className="number-field focus:outline-none bg-white w-full h-14 my-3 p-3 text-center text-black text-xl"
                       ></input>
                       {error && <div className="text-white text-sm mb-2 bg-red-600 p-2">{error}</div>}
-                      <button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]" type="submit">
-                        Send
-                      </button>
+
+                      <div className="flex justify-center space-x-7">
+                        <button
+                          className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]"
+                          onClick={() => setStep(step - 1)}
+                        >
+                          Avbryt
+                        </button>
+                        <button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]" type="submit">
+                          Send
+                        </button>
+                      </div>
                     </form>
                   </div>
                 </div>
