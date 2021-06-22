@@ -66,7 +66,7 @@ const Step2 = () => {
       return;
     }
     if (val !== keyCode) {
-      setError('Koden må stemme med kodebrikken!.');
+      setError('Koden må stemme med kodebrikken.');
       return;
     }
     // setError(null);
