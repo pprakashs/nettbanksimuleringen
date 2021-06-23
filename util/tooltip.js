@@ -18,11 +18,21 @@ function removeTooltip() {
 }
 
 const tooltip = () => {
+  let i = 0;
+  let closeTimeout;
   document.querySelectorAll('.tooltip').forEach((tooltip) => {
     tooltip.setAttribute('data-tooltip-clicked', false);
     tooltip.addEventListener('click', (e) => {
+      i++;
       const current = e.currentTarget;
       const { x, y } = e;
+      if (i > 0) {
+        clearTimeout(closeTimeout);
+      }
+      closeTimeout = setTimeout(() => {
+        removeTooltipFormDom();
+        current.setAttribute('data-tooltip-clicked', false);
+      }, 2500);
 
       removeTooltipFormDom();
 
@@ -59,7 +69,6 @@ const tooltip = () => {
 
       if (!clickedState) {
         document.body.insertAdjacentHTML('beforeend', markup);
-
         setTimeout(() => {
           document.querySelector('.tooltip-popup').classList.remove('opacity-0');
         }, 50);
@@ -67,10 +76,6 @@ const tooltip = () => {
       } else {
         setTooltipFalse();
       }
-      setTimeout(() => {
-        removeTooltipFormDom();
-        current.setAttribute('data-tooltip-clicked', false);
-      }, 2500);
     });
   });
   removeTooltip();
