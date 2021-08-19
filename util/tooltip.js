@@ -61,7 +61,7 @@ const tooltip = () => {
       if (y < 100) topOffset = y * 1.5;
 
       const clickedState = JSON.parse(current.getAttribute('data-tooltip-clicked'));
-      const bg = current.getAttribute('data-tooltip-bg') ? current.getAttribute('data-tooltip-bg') : 'bg-pink';
+      const bg = current.getAttribute('data-tooltip-bg') ? current.getAttribute('data-tooltip-bg') : '#FFD36C';
 
       const markup = `<div class="${bg} lg:p-4 p-2 border shadow-md border-primary text-center lg:text-xl text-sm lg:w-[360px] w-56 tooltip-popup absolute transition duration-300 opacity-0" style="left: ${left}px; top: ${topOffset}px">${current.getAttribute(
         'data-tooltip-text'
