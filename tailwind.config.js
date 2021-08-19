@@ -26,6 +26,7 @@ module.exports = {
         blue: 'var(--blue)',
         'blue-50': '#E5E8F5',
         'red-1100': '#A80037',
+        'yellow-1000': '#FFD36C'
       },
       textColor: {
         blue: 'var(--blue)',
