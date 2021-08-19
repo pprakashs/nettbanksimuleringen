@@ -122,7 +122,7 @@ const Mobile1 = () => {
                         className="number-field focus:outline-none border border-gray-300 px-3 py-2 text-xl w-full"
                       />
                     </div>
-                    {errorMobileNumber && <div className="text-red-600 text-lg mb-6 -mt-6">{errorMobileNumber}</div>}
+                    {errorMobileNumber && <div className="text-red-1100 text-lg mb-6 -mt-6">{errorMobileNumber}</div>}
                     <div className="mb-8">
                       <label className="text-xl block mb-3">Fødselsdato</label>
                       <input
@@ -132,7 +132,7 @@ const Mobile1 = () => {
                         className="number-field focus:outline-none border border-gray-300 px-3 py-2 text-xl w-full"
                       />
                     </div>
-                    {errorDateBirth && <div className="text-red-600 text-lg mb-6 -mt-6">{errorDateBirth}</div>}
+                    {errorDateBirth && <div className="text-red-1100 text-lg mb-6 -mt-6">{errorDateBirth}</div>}
                     <div className="w-32 text-center">
                       <button
                         type="submit"
@@ -166,7 +166,7 @@ const Mobile1 = () => {
                 <button
                   type="button"
                   onClick={backHandle}
-                  className="bg-white p-3 rounded-lg border border-black uppercase text-xl font-anenirHeavy text-black transition w-32 text-center hover:bg-pink block"
+                  className="bg-secondary p-3 rounded-lg border border-black uppercase text-xl font-anenirHeavy text-black transition w-32 text-center hover:bg-white block"
                 >
                   Avbryt
                 </button>
@@ -174,7 +174,7 @@ const Mobile1 = () => {
             </div>
           </div>
           <div
-            className="border border-secondary bg-[#CEEBF5] p-[40px] xl:w-[325px] w-1/3 relative hidden opacity-0 transition duration-300"
+            className="border border-gray-1100 bg-blue-50 p-[40px] xl:w-[325px] w-1/3 relative hidden opacity-0 transition duration-300"
             ref={sidePanel}
           >
             <div className="intro-text transition duration-300 h-full flex justify-center items-center flex-col">
@@ -210,7 +210,7 @@ const Mobile1 = () => {
                       name="pinId"
                       className="number-field focus:outline-none bg-white w-full h-14 my-3 p-3 text-center text-black text-xl"
                     ></input>
-                    {errorPinID && <div className="text-white text-sm mb-2 bg-red-600 p-2">{errorPinID}</div>}
+                    {errorPinID && <div className="text-white text-sm mb-2 bg-red-1100 p-2">{errorPinID}</div>}
 
                     <div className="flex justify-center w-full space-x-6">
                       <button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]" onClick={backHandle}>

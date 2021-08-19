@@ -69,7 +69,7 @@ const ScreenFirst = () => {
                   name="mobileNumber"
                   className="number-field focus:outline-none border border-gray-300 px-3 py-2 text-xl w-full"
                 />
-                {error && <div className="text-red-600 text-lg mt-2">{error}</div>}
+                {error && <div className="text-red-1100 text-lg mt-2">{error}</div>}
               </div>
 
               <div className="w-32 text-center">
@@ -92,7 +92,7 @@ const ScreenFirst = () => {
           </form>
         </div>
       </div>
-      <div className="border border-secondary bg-[#CEEBF5] p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
+      <div className="border border-gray-1100 bg-blue-50  p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
         <div className="intro-text transition duration-300">
           <h1 className="mb-5">Oppgavetekst</h1>
           <p className="text-base max-w-[250px] pb-8">Du ønsker å aktivere BankID på mobil for ditt mobilnummer.</p>

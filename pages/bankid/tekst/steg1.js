@@ -44,6 +44,7 @@ const Step2 = () => {
       setError(true);
       return;
     }
+    setError(null);
     const sideBarAnimation = new Promise((resolve, reject) => {
       introText.classList.add('opacity-0');
       setTimeout(() => {
@@ -69,7 +70,7 @@ const Step2 = () => {
       setError('Koden må stemme med kodebrikken.');
       return;
     }
-    // setError(null);
+    setError(null);
     dispatch(setUser('tekst'));
     router.push('/konto');
   };
@@ -94,7 +95,7 @@ const Step2 = () => {
                           data-name="Path 35"
                           d="M18.54,19.248V17.784a5.091,5.091,0,0,1,.1-1.08,2.914,2.914,0,0,1,.288-.78,3.019,3.019,0,0,1,.516-.672q.324-.324.8-.78.384-.36.768-.732a7.739,7.739,0,0,0,.7-.768,4.162,4.162,0,0,0,.516-.84,2.358,2.358,0,0,0,.2-1,2.525,2.525,0,0,0-.2-1.02,2.582,2.582,0,0,0-.54-.8,2.423,2.423,0,0,0-.8-.528,2.6,2.6,0,0,0-1-.192,2.558,2.558,0,0,0-1.908.744A3.228,3.228,0,0,0,17.1,11.28l-2.448-.24a5.057,5.057,0,0,1,1.74-3.276,5.349,5.349,0,0,1,3.54-1.188,5.777,5.777,0,0,1,1.884.3,4.527,4.527,0,0,1,1.524.864,3.979,3.979,0,0,1,1.02,1.392,4.551,4.551,0,0,1,.372,1.884,4.419,4.419,0,0,1-.264,1.6,4.836,4.836,0,0,1-.744,1.284l-1.44,1.488-.24.216q-.384.36-.612.612a2.21,2.21,0,0,0-.36.528,2.1,2.1,0,0,0-.18.612,6.1,6.1,0,0,0-.048.84v1.056Zm-.456,3.312a1.6,1.6,0,1,1,.468,1.116A1.524,1.524,0,0,1,18.084,22.56Z"
                           transform="translate(-14.652 -6.576)"
-                          fill="#d34618"
+                          fill="#0025A0"
                         />
                       </svg>
                     </span>
@@ -104,7 +105,9 @@ const Step2 = () => {
                     <input
                       type="number"
                       name="accountNumber"
-                      className="border-2 border-primary p-3 text-xl block number-field focus:outline-none h-13 w-72"
+                      className={`${
+                        error ? 'border-red-1100' : 'border-primary'
+                      } border-2  p-3 text-xl block number-field focus:outline-none h-13 w-72`}
                       placeholder="11 siffer"
                     />
                     <button type="submit" className="bg-primary h-13 w-16 ml-4 flex justify-center items-center focus:outline-none ">
@@ -117,7 +120,7 @@ const Step2 = () => {
                       </svg>
                     </button>
                   </div>
-                  {error && <div className="text-red-600 pt-3 text-xl">Fødselsnummer må inneholde 11 siffer.</div>}
+                  {error && <div className="text-red-1100 pt-2 text-xl">Fødselsnummer må inneholde 11 siffer.</div>}
                 </form>
               ) : (
                 <form onSubmit={submitHandleScreen2} ref={formRef2}>
@@ -127,7 +130,9 @@ const Step2 = () => {
                     <input
                       type="number"
                       name="keyCode"
-                      className="border-2 border-primary p-3 text-xl block number-field focus:outline-none h-13 w-72"
+                      className={`${
+                        error ? 'border-red-1100' : 'border-primary'
+                      } border-2  p-3 text-xl block number-field focus:outline-none h-13 w-72`}
                       placeholder="6 siffer"
                     />
                     <button type="submit" className="bg-primary h-13 w-16 ml-4 flex justify-center items-center focus:outline-none ">
@@ -140,12 +145,12 @@ const Step2 = () => {
                       </svg>
                     </button>
                   </div>
-                  {error && <div className="text-red-600 pt-3 text-xl">{error}</div>}
+                  {error && <div className="text-red-1100 pt-2 text-xl">{error}</div>}
                 </form>
               )}
             </div>
           </div>
-          <div className="border border-secondary bg-[#CEEBF5] p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
+          <div className="border border-gray-1100 bg-blue-50 p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
             <div className="intro-text transition duration-300">
               <h1 className="mb-5">Oppgavetekst</h1>
               <p className="text-base max-w-[250px]">

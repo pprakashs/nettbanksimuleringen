@@ -141,7 +141,7 @@ const MobileValidation = ({ transaction }) => {
                       name="pinId"
                       className="number-field focus:outline-none bg-white w-full h-14 my-3 p-3 text-center text-black text-xl"
                     ></input>
-                    {errorPinID && <div className="text-red-600 text-sm mb-2">{errorPinID}</div>}
+                    {errorPinID && <div className="text-red-1100 text-sm mb-2">{errorPinID}</div>}
                     <button className="bg-none border-0 focus:outline-none text-base font-anenirHeavy text-[#FEC8AF]" onClick={sendHandle}>
                       Send
                     </button>

@@ -97,7 +97,7 @@ const TextValidation = ({ transaction }) => {
                     </svg>
                   </button>
                 </div>
-                {error && <div className="text-red-600 pt-3 text-xl">{error}</div>}
+                {error && <div className="text-red-1100 pt-3 text-xl">{error}</div>}
               </form>
             </div>
           </div>

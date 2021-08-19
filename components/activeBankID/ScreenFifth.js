@@ -105,7 +105,7 @@ const ScreenFifth = () => {
         </div>
       </div>
       {step > 1 && (
-        <div className="border border-secondary bg-[#CEEBF5] p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
+        <div className="border border-gray-1100 bg-blue-50 p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
           <div className="h-full w-full flex flex-col justify-center items-center">
             <div className="w-[204px] relative">
               <img src={require('./../../img/mobile.png')} className="w-full" alt="" />
@@ -142,7 +142,7 @@ const ScreenFifth = () => {
                         name="pinId"
                         className="number-field focus:outline-none bg-white w-full h-14 my-3 p-3 text-center text-black text-xl"
                       ></input>
-                      {error && <div className="text-white text-sm mb-2 bg-red-600 p-2">{error}</div>}
+                      {error && <div className="text-white text-sm mb-2 bg-red-1100 p-2">{error}</div>}
 
                       <div className="flex justify-center space-x-7">
                         <button

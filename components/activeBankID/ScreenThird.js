@@ -83,11 +83,11 @@ const ScreenThird = () => {
                 </svg>
               </button>
             </div>
-            {error && <div className="text-red-600 pt-3 text-xl mt-2">{error}</div>}
+            {error && <div className="text-red-1100 pt-3 text-xl mt-1">{error}</div>}
           </form>
         </div>
       </div>
-      <div className="border border-secondary bg-[#CEEBF5] p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
+      <div className="border border-gray-1100 bg-blue-50 p-[40px] w-[325px] relative hidden opacity-0 transition duration-300" ref={sidePanel}>
         <div className="key-block h-full">
           <div className="flex h-full justify-center items-center">
             <div className="relative">
